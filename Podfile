@@ -5,7 +5,6 @@ use_frameworks!
 def shared_pods
   pod 'ObjectMapper', '3.3.0'
   pod 'Alamofire', '4.7.3'
-  pod 'SwiftLint', '0.27.0'
   pod 'KeychainAccess', '3.1.2'
   pod 'QQ_MTA'
 end

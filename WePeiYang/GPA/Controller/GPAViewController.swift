@@ -616,7 +616,7 @@ extension GPAViewController: UITableViewDelegate {
 extension GPAViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offset = scrollView.contentOffset.y - 80
-
+//
 //        if scrollView.contentOffset.y > 0 && scrollView.contentOffset.y < 720 {
 //            let scrollOffsetY = scrollView.contentOffset.y - lastScrollOffset.y
 //            radarChartView.rotationAngle = (scrollOffsetY * 360.0 / 720.0  + radarChartView.rotationAngle).truncatingRemainder(dividingBy: 360)
