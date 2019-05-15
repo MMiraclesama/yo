@@ -7,17 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		04244616227EFADF002361DA /* DynamicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04244615227EFADF002361DA /* DynamicModel.swift */; };
-		04244618227EFB00002361DA /* QAModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04244617227EFB00002361DA /* QAModel.swift */; };
-		0424461D227EFB28002361DA /* ConsumeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0424461A227EFB28002361DA /* ConsumeModel.swift */; };
-		04244620227EFB38002361DA /* SaveSearchingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0424461F227EFB38002361DA /* SaveSearchingModel.swift */; };
-		04244622227EFB5D002361DA /* DynamicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04244621227EFB5D002361DA /* DynamicCell.swift */; };
-		04244624227EFB67002361DA /* FirstPageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04244623227EFB67002361DA /* FirstPageCell.swift */; };
-		04244626227EFB70002361DA /* QACell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04244625227EFB70002361DA /* QACell.swift */; };
-		04244628227EFB7A002361DA /* DynamicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04244627227EFB7A002361DA /* DynamicViewController.swift */; };
-		0424462A227EFB84002361DA /* FirstPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04244629227EFB84002361DA /* FirstPageViewController.swift */; };
-		0424462D227EFB91002361DA /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0424462B227EFB91002361DA /* HelpViewController.swift */; };
 		0434AEC62258A1150003898D /* AccountLineChartViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0434AEC52258A1150003898D /* AccountLineChartViewCell.swift */; };
+		043D3F752285C08100E64476 /* FirstPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043D3F742285C08100E64476 /* FirstPageView.swift */; };
+		043D3F772285C0E400E64476 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043D3F762285C0E400E64476 /* HelpViewController.swift */; };
+		043D3F792285C0FC00E64476 /* QACell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043D3F782285C0FC00E64476 /* QACell.swift */; };
+		043D3F7B2285C12600E64476 /* ProgramViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043D3F7A2285C12600E64476 /* ProgramViewController.swift */; };
+		043D3F7D2285C17A00E64476 /* DynamicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043D3F7C2285C17A00E64476 /* DynamicViewController.swift */; };
+		043D3F7F2285C1D100E64476 /* SaveSearchingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043D3F7E2285C1D100E64476 /* SaveSearchingModel.swift */; };
+		043D3F812285C20000E64476 /* ConsumeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043D3F802285C20000E64476 /* ConsumeModel.swift */; };
+		043D3F832285C22D00E64476 /* QAModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043D3F822285C22D00E64476 /* QAModel.swift */; };
+		043D3F852285C24E00E64476 /* DynamicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043D3F842285C24E00E64476 /* DynamicModel.swift */; };
+		043D3F872285C29200E64476 /* FirstPageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043D3F862285C29200E64476 /* FirstPageCell.swift */; };
+		043D3F892285C2A900E64476 /* DynamicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043D3F882285C2A900E64476 /* DynamicCell.swift */; };
+		045EBF0122840EAA00DBEA04 /* ScaleLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045EBF0022840EAA00DBEA04 /* ScaleLabelView.swift */; };
+		045EBF03228419E900DBEA04 /* EcardLineChartsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045EBF02228419E900DBEA04 /* EcardLineChartsView.swift */; };
+		045EBF0922847A6B00DBEA04 /* MoneyTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045EBF0822847A6B00DBEA04 /* MoneyTest.swift */; };
 		047A651322474A7600268AAA /* ConsumeDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047A651222474A7600268AAA /* ConsumeDetail.swift */; };
 		047A6515224757F100268AAA /* LintChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047A6514224757F100268AAA /* LintChart.swift */; };
 		047A651722475A8900268AAA /* AccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047A651622475A8900268AAA /* AccountController.swift */; };
@@ -329,17 +333,21 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		04244615227EFADF002361DA /* DynamicModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DynamicModel.swift; path = ../../../../Desktop/Model/DynamicModel.swift; sourceTree = "<group>"; };
-		04244617227EFB00002361DA /* QAModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QAModel.swift; path = ../../../../Desktop/Model/QAModel.swift; sourceTree = "<group>"; };
-		0424461A227EFB28002361DA /* ConsumeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConsumeModel.swift; path = ../../../../Desktop/Model/ConsumeModel.swift; sourceTree = "<group>"; };
-		0424461F227EFB38002361DA /* SaveSearchingModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SaveSearchingModel.swift; path = ../../../../Desktop/Model/SaveSearchingModel.swift; sourceTree = "<group>"; };
-		04244621227EFB5D002361DA /* DynamicCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DynamicCell.swift; path = ../../../../Desktop/Controller/DynamicCell.swift; sourceTree = "<group>"; };
-		04244623227EFB67002361DA /* FirstPageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirstPageCell.swift; path = ../../../../Desktop/Controller/FirstPageCell.swift; sourceTree = "<group>"; };
-		04244625227EFB70002361DA /* QACell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QACell.swift; path = ../../../../Desktop/Controller/QACell.swift; sourceTree = "<group>"; };
-		04244627227EFB7A002361DA /* DynamicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DynamicViewController.swift; path = ../../../../Desktop/Controller/DynamicViewController.swift; sourceTree = "<group>"; };
-		04244629227EFB84002361DA /* FirstPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirstPageViewController.swift; path = ../../../../Desktop/Controller/FirstPageViewController.swift; sourceTree = "<group>"; };
-		0424462B227EFB91002361DA /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HelpViewController.swift; path = ../../../../Desktop/Controller/HelpViewController.swift; sourceTree = "<group>"; };
 		0434AEC52258A1150003898D /* AccountLineChartViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountLineChartViewCell.swift; sourceTree = "<group>"; };
+		043D3F742285C08100E64476 /* FirstPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstPageView.swift; sourceTree = "<group>"; };
+		043D3F762285C0E400E64476 /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
+		043D3F782285C0FC00E64476 /* QACell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QACell.swift; sourceTree = "<group>"; };
+		043D3F7A2285C12600E64476 /* ProgramViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgramViewController.swift; sourceTree = "<group>"; };
+		043D3F7C2285C17A00E64476 /* DynamicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicViewController.swift; sourceTree = "<group>"; };
+		043D3F7E2285C1D100E64476 /* SaveSearchingModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveSearchingModel.swift; sourceTree = "<group>"; };
+		043D3F802285C20000E64476 /* ConsumeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsumeModel.swift; sourceTree = "<group>"; };
+		043D3F822285C22D00E64476 /* QAModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QAModel.swift; sourceTree = "<group>"; };
+		043D3F842285C24E00E64476 /* DynamicModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicModel.swift; sourceTree = "<group>"; };
+		043D3F862285C29200E64476 /* FirstPageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstPageCell.swift; sourceTree = "<group>"; };
+		043D3F882285C2A900E64476 /* DynamicCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicCell.swift; sourceTree = "<group>"; };
+		045EBF0022840EAA00DBEA04 /* ScaleLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleLabelView.swift; sourceTree = "<group>"; };
+		045EBF02228419E900DBEA04 /* EcardLineChartsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EcardLineChartsView.swift; sourceTree = "<group>"; };
+		045EBF0822847A6B00DBEA04 /* MoneyTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyTest.swift; sourceTree = "<group>"; };
 		047A651222474A7600268AAA /* ConsumeDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumeDetail.swift; sourceTree = "<group>"; };
 		047A6514224757F100268AAA /* LintChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LintChart.swift; sourceTree = "<group>"; };
 		047A651622475A8900268AAA /* AccountController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountController.swift; sourceTree = "<group>"; };
@@ -658,10 +666,10 @@
 		047A650C22473F2900268AAA /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				0424461F227EFB38002361DA /* SaveSearchingModel.swift */,
-				0424461A227EFB28002361DA /* ConsumeModel.swift */,
-				04244617227EFB00002361DA /* QAModel.swift */,
-				04244615227EFADF002361DA /* DynamicModel.swift */,
+				043D3F7E2285C1D100E64476 /* SaveSearchingModel.swift */,
+				043D3F802285C20000E64476 /* ConsumeModel.swift */,
+				043D3F822285C22D00E64476 /* QAModel.swift */,
+				043D3F842285C24E00E64476 /* DynamicModel.swift */,
 				047A651222474A7600268AAA /* ConsumeDetail.swift */,
 				047A6514224757F100268AAA /* LintChart.swift */,
 				047A653C2247731A00268AAA /* ECardHelper.swift */,
@@ -672,11 +680,13 @@
 		047A650D22473F3200268AAA /* View */ = {
 			isa = PBXGroup;
 			children = (
-				04244625227EFB70002361DA /* QACell.swift */,
-				04244623227EFB67002361DA /* FirstPageCell.swift */,
-				04244621227EFB5D002361DA /* DynamicCell.swift */,
+				043D3F782285C0FC00E64476 /* QACell.swift */,
+				043D3F862285C29200E64476 /* FirstPageCell.swift */,
+				043D3F882285C2A900E64476 /* DynamicCell.swift */,
 				047A653A2247684300268AAA /* AccountViewCell.swift */,
 				0434AEC52258A1150003898D /* AccountLineChartViewCell.swift */,
+				045EBF0022840EAA00DBEA04 /* ScaleLabelView.swift */,
+				045EBF02228419E900DBEA04 /* EcardLineChartsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -797,6 +807,7 @@
 				047A650D22473F3200268AAA /* View */,
 				047A650C22473F2900268AAA /* Model */,
 				3615A9C821ACEB94001D1522 /* Controller */,
+				045EBF0822847A6B00DBEA04 /* MoneyTest.swift */,
 			);
 			path = ECard;
 			sourceTree = "<group>";
@@ -804,9 +815,10 @@
 		3615A9C821ACEB94001D1522 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				0424462B227EFB91002361DA /* HelpViewController.swift */,
-				04244629227EFB84002361DA /* FirstPageViewController.swift */,
-				04244627227EFB7A002361DA /* DynamicViewController.swift */,
+				043D3F7A2285C12600E64476 /* ProgramViewController.swift */,
+				043D3F742285C08100E64476 /* FirstPageView.swift */,
+				043D3F7C2285C17A00E64476 /* DynamicViewController.swift */,
+				043D3F762285C0E400E64476 /* HelpViewController.swift */,
 				3615A9C921ACEBDC001D1522 /* CardTransectionViewController.swift */,
 				047A651622475A8900268AAA /* AccountController.swift */,
 			);
@@ -1853,6 +1865,7 @@
 				360339E920247B9D0006A083 /* LibraryCard.swift in Sources */,
 				DD0B75F52158C6ED009A392C /* YellowPageMainViewController.swift in Sources */,
 				3614D57B21D929FE0007B886 /* BookCollectionCell.swift in Sources */,
+				045EBF0122840EAA00DBEA04 /* ScaleLabelView.swift in Sources */,
 				B102540E1EC8520A0064373A /* ClassExtensions.swift in Sources */,
 				78FB9E9D217AEF54001DE39A /* PublishSuccessViewController.swift in Sources */,
 				3614D57821D929FE0007B886 /* BookListTableViewCell.swift in Sources */,
@@ -1862,27 +1875,29 @@
 				365261561FB9F83400025B8A /* ClassTableModel.swift in Sources */,
 				DD2A2AC321B773B600EA6F8F /* AuditCacheManager.swift in Sources */,
 				36449E901FA4BAD10036766B /* GradeDetailViewController.swift in Sources */,
-				04244616227EFADF002361DA /* DynamicModel.swift in Sources */,
+				043D3F852285C24E00E64476 /* DynamicModel.swift in Sources */,
 				78FB9E7A217AEC0B001DE39A /* LostFoundAPI.swift in Sources */,
 				36449E921FA4BAD10036766B /* AllQuizViewController.swift in Sources */,
 				36449E481FA4BA9B0036766B /* ApplicantTest.swift in Sources */,
 				361F8863204AF94200BCFA19 /* NewsTableViewCell.swift in Sources */,
 				36449E6F1FA4BABA0036766B /* CourseDetailTableViewCell.swift in Sources */,
 				361F8854204AF92100BCFA19 /* NewsModel.swift in Sources */,
+				043D3F752285C08100E64476 /* FirstPageView.swift in Sources */,
 				047A653D2247731A00268AAA /* ECardHelper.swift in Sources */,
 				368C3C8A204DAB4F00C1E6B6 /* WPYCustomError.swift in Sources */,
 				361FB17A21843AFC00BD5A1E /* UploadingPicCell.swift in Sources */,
 				3614D55621D928BB0007B886 /* WLANHelper.swift in Sources */,
-				0424462A227EFB84002361DA /* FirstPageViewController.swift in Sources */,
 				A5E117BB1F99DCBE00C86CA2 /* NotificationItem.swift in Sources */,
 				36F631EE1FAB31C500E3261F /* BicycleUserBindViewController.swift in Sources */,
 				36449E641FA4BABA0036766B /* QuizView.swift in Sources */,
 				3644E20221D8E0E9001F13F9 /* BaseResponse.swift in Sources */,
+				043D3F772285C0E400E64476 /* HelpViewController.swift in Sources */,
 				DD0B75F72158C6ED009A392C /* PhoneBook.swift in Sources */,
 				365A8A281FB9CA1700B15443 /* ClassModel.swift in Sources */,
 				78FB9E97217AEEF4001DE39A /* MyLostFoundPageViewController.swift in Sources */,
 				DD0B76262158CBA6009A392C /* GPAModel.swift in Sources */,
 				364BDF6C1FDAD41100E61B65 /* CardViewTransitionAnimator.swift in Sources */,
+				043D3F792285C0FC00E64476 /* QACell.swift in Sources */,
 				DD0B762C2158CBA6009A392C /* ScoreHeaderView.swift in Sources */,
 				78FB9E9B217AEF3C001DE39A /* PublishLostViewController.swift in Sources */,
 				36449E491FA4BA9B0036766B /* Applicant.swift in Sources */,
@@ -1934,9 +1949,9 @@
 				36F631EF1FAB31C500E3261F /* BicycleServiceMapController.swift in Sources */,
 				DD0B76252158CBA6009A392C /* GPATermModel.swift in Sources */,
 				3614D57E21D929FE0007B886 /* BookDetailTableViewCell.swift in Sources */,
-				04244628227EFB7A002361DA /* DynamicViewController.swift in Sources */,
 				DD2A2ABF21B2DEBB00EA6F8F /* CourseCollectionViewCell.swift in Sources */,
 				DD0B75FB2158C6ED009A392C /* YellowPageCell.swift in Sources */,
+				045EBF0922847A6B00DBEA04 /* MoneyTest.swift in Sources */,
 				78B400E7219C6366006A8A45 /* AuditHomeViewController.swift in Sources */,
 				361F885E204AF92D00BCFA19 /* BannerCell.swift in Sources */,
 				36DA7A5D1FA8A35C000DAF2B /* CacheManager.swift in Sources */,
@@ -1945,11 +1960,13 @@
 				DD2A2ABD21B2DC5100EA6F8F /* CourseCollectionView.swift in Sources */,
 				3613DA222056F740000867AE /* UniversalExtension.swift in Sources */,
 				364BDF721FDAE1EF00E61B65 /* GPACard.swift in Sources */,
+				043D3F812285C20000E64476 /* ConsumeModel.swift in Sources */,
 				36DA7A5F1FA8A35C000DAF2B /* DeviceStatus.swift in Sources */,
 				364EBDE621AD11D600CA88FD /* ECardBindingViewController.swift in Sources */,
 				361F885D204AF92D00BCFA19 /* BannerScrollView.swift in Sources */,
 				3615A9CA21ACEBDC001D1522 /* CardTransectionViewController.swift in Sources */,
 				DD0B76282158CBA6009A392C /* GPASessionManager.swift in Sources */,
+				045EBF03228419E900DBEA04 /* EcardLineChartsView.swift in Sources */,
 				DD41A83521A4748F00886BB4 /* AuditDetailViewController.swift in Sources */,
 				DDC7891E21B1302C00ABA33F /* CourseNode.swift in Sources */,
 				3685D9F1204D276100BA6C3D /* NewsDetailModel.swift in Sources */,
@@ -1969,8 +1986,6 @@
 				36449E871FA4BAD10036766B /* QuizTakingViewController.swift in Sources */,
 				3614D57A21D929FE0007B886 /* BookDetailTableHeaderView.swift in Sources */,
 				3667E1D0201CB98800E82241 /* DetailSettingViewController.swift in Sources */,
-				04244626227EFB70002361DA /* QACell.swift in Sources */,
-				0424461D227EFB28002361DA /* ConsumeModel.swift in Sources */,
 				3614D56E21D929FE0007B886 /* LibraryMainViewController.swift in Sources */,
 				3614D57021D929FE0007B886 /* LibraryReadViewController.swift in Sources */,
 				78FB9E99217AEF09001DE39A /* MyLostViewController.swift in Sources */,
@@ -1989,6 +2004,7 @@
 				36366B2E1FAB86B0001F72A0 /* BicycleServiceViewController.swift in Sources */,
 				36449E611FA4BABA0036766B /* TextTableViewCell.swift in Sources */,
 				78FB9E95217AEEDE001DE39A /* MyFoundViewController.swift in Sources */,
+				043D3F7B2285C12600E64476 /* ProgramViewController.swift in Sources */,
 				3613DA1E2056F696000867AE /* SwiftMessagesExtension.swift in Sources */,
 				365B5399216E5F4000A808EE /* ClassTableSettingViewController.swift in Sources */,
 				36449E8C1FA4BAD10036766B /* PartyHandInViewController.swift in Sources */,
@@ -2012,7 +2028,6 @@
 				A554C4BB1F99E64600022A01 /* BicycleFitnessTrackerViewCell.swift in Sources */,
 				DD41A83921A4FE8100886BB4 /* AuditCollegeModel.swift in Sources */,
 				A51C45681FD0227800652435 /* WLANBindingViewController.swift in Sources */,
-				04244620227EFB38002361DA /* SaveSearchingModel.swift in Sources */,
 				36B8F2EA205110A60080083C /* NotificationSettingViewController.swift in Sources */,
 				047A653B2247684300268AAA /* AccountViewCell.swift in Sources */,
 				36449E861FA4BAD10036766B /* TheoryClassicsTableViewController.swift in Sources */,
@@ -2023,13 +2038,12 @@
 				78FB9E7E217AEC5A001DE39A /* LostFoundModel.swift in Sources */,
 				361F8856204AF92100BCFA19 /* HomePageModel.swift in Sources */,
 				3614D57321D929FE0007B886 /* BookConstant.swift in Sources */,
-				04244622227EFB5D002361DA /* DynamicCell.swift in Sources */,
 				36449E881FA4BAD10036766B /* PartySignUpViewController.swift in Sources */,
 				36449E601FA4BABA0036766B /* TheoryCourseArticleReadingView.swift in Sources */,
 				369306951F2B976C008E90DC /* ModuleCollectionViewCell.swift in Sources */,
 				A554C4B11F99E43F00022A01 /* BicycleServiceNotificationController.swift in Sources */,
+				043D3F7F2285C1D100E64476 /* SaveSearchingModel.swift in Sources */,
 				A5E117AF1F99DB8E00C86CA2 /* BicycleUser.swift in Sources */,
-				0424462D227EFB91002361DA /* HelpViewController.swift in Sources */,
 				DD6A663621ABCEB10070C4B2 /* AuditPersonalCourseModel.swift in Sources */,
 				369140AF2020CBA30022BA3F /* NotificationName.swift in Sources */,
 				B10253F21EC84ED90064373A /* SolaSessionManager.swift in Sources */,
@@ -2039,15 +2053,16 @@
 				363D0A701FE006990095DA57 /* LibraryCardDataProvider.swift in Sources */,
 				78FB9E9F217AEF79001DE39A /* ButtonGroups.swift in Sources */,
 				A5E117B71F99DC9400C86CA2 /* NotificationList.swift in Sources */,
-				04244624227EFB67002361DA /* FirstPageCell.swift in Sources */,
 				362B055221CD52A000B370E7 /* ARKeyWindow.swift in Sources */,
 				3614D54A21D9251A0007B886 /* ExamTableViewCell.swift in Sources */,
 				B102541E1EC8547E0064373A /* TabVCTransitioningAnimator.swift in Sources */,
 				047A651722475A8900268AAA /* AccountController.swift in Sources */,
+				043D3F892285C2A900E64476 /* DynamicCell.swift in Sources */,
+				043D3F832285C22D00E64476 /* QAModel.swift in Sources */,
+				043D3F872285C29200E64476 /* FirstPageCell.swift in Sources */,
 				36D0FE76201867CF0014E667 /* ArrangeCell.swift in Sources */,
 				DD41A82F21A3265800886BB4 /* PopularListModel.swift in Sources */,
 				DD6A663421A59D260070C4B2 /* AuditCollegeCourseViewController.swift in Sources */,
-				04244618227EFB00002361DA /* QAModel.swift in Sources */,
 				A5E117BD1F99DCF300C86CA2 /* BicycleFitnessTrackerViewController.swift in Sources */,
 				36449E8F1FA4BAD10036766B /* HandInDetailViewController.swift in Sources */,
 				3668CE552159E121002673BE /* WPYTextField.swift in Sources */,
@@ -2079,6 +2094,7 @@
 				A53602691FC6EC0500E3D1AF /* TJUBindingViewController.swift in Sources */,
 				78FB9E65217AE69D001DE39A /* LFCollectionReusableHeaderView.swift in Sources */,
 				78FB9E6B217AEA9D001DE39A /* LFSearchCustomCell.swift in Sources */,
+				043D3F7D2285C17A00E64476 /* DynamicViewController.swift in Sources */,
 				78FB9E7C217AEC36001DE39A /* LostFoundDetailModel.swift in Sources */,
 				78FB9E6F217AEAE1001DE39A /* LostFoundCollectionViewCell.swift in Sources */,
 				DD0B762B2158CBA6009A392C /* StarView.swift in Sources */,

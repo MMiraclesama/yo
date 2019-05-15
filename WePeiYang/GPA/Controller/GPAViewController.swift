@@ -304,6 +304,7 @@ class GPAViewController: UIViewController {
         GPASessionManager.getGPA(success: { model in
             self.isRefreshing = false
             self.stopRotating()
+            
             SwiftMessages.hideLoading()
             self.loadModel(model: model)
             // 数据有效 存起来

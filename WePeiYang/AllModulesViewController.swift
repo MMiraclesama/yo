@@ -22,7 +22,7 @@ class AllModulesViewController: UIViewController {
         (title: "上网", image: UIImage(named: "networkBtn")!, class: WLANLoginViewController.self, needLogin: true),
         (title: "图书馆", image: UIImage(named: "libBtn")!, class: LibraryMainViewController.self, needLogin: true),
         (title: "失物招领", image: UIImage(named: "lfBtn")!, class: LostFoundPageViewController.self, needLogin: true),
-        (title: "校园卡", image: UIImage(named: "lfBtn")!, class: FirstPageViewController.self, needLogin: true)]
+        (title: "校园卡", image: UIImage(named: "lfBtn")!, class: NewFirstPageViewController.self, needLogin: true)]
 
     var collectionView: UICollectionView!
 

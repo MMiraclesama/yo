@@ -39,7 +39,7 @@ struct ECardHelper {
 
 struct GetConsumeHelper {
     static func GetConsume(success: @escaping (ConsumeDetail) -> Void, failure: @escaping (Error) -> Void) {
-        SolaSessionManager.solaSession(type: .get, url: TurnoverUrl, parameters: ["cardnum": "3018216142", "password": "629031", "term": "7"], success: { dic in
+        SolaSessionManager.solaSession(type: .get, url: TurnoverUrl, parameters: ["cardnum": "3018216142", "password": "629031", "term": "\(Figure.term)"], success: { dic in
             if let data = try? JSONSerialization.data(withJSONObject: dic, options: JSONSerialization.WritingOptions.init(rawValue: 0)),
                 let tuenover = try? ConsumeDetail(data: data) {
                 success(tuenover)
