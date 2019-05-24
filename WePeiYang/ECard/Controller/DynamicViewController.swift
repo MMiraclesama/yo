@@ -26,6 +26,9 @@ class DynamicViewController: UIViewController {
         view.addSubview(dynamicTableView)
         navigationItem.title = "校园卡"
         UINavigationBar.appearance().backgroundColor = UIColor.blue
+        let leftButton = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(pop))
+        leftButton.image = UIImage.resizedImage(image: UIImage(named:"返回-1")!, scaledToSize: CGSize(width: 20, height: 20))
+        navigationItem.leftBarButtonItem = leftButton
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
     func loadData() {
@@ -35,6 +38,9 @@ class DynamicViewController: UIViewController {
         }, failure: { _ in
             
         })
+    }
+    @objc func pop() {
+        navigationController?.popViewController(animated: true)
     }
 
 }

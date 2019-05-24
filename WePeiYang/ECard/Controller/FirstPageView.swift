@@ -19,7 +19,7 @@ var sum4 = 0.0
 var rate1 = 0.0
 var rate2 = 0.0
 var rate3 = 0.0
-
+var footerViewHeight = 50
 class NewFirstPageViewController: UIViewController {
     
     private var refreshButton: UIView? {
@@ -42,10 +42,11 @@ class NewFirstPageViewController: UIViewController {
     private func stopRotating() {
         refreshButton?.layer.removeAllAnimations()
     }
-
     
-    var ecardTableView = UITableView(frame: CGRect(x: 17, y: 110, width: UIScreen.main.bounds.width - 35, height: UIScreen.main.bounds.height - 110), style: .grouped)
-    let ECardLabel = UILabel(frame: CGRect(x: 17, y: 110, width: UIScreen.main.bounds.width - 35, height: 200))
+    
+    var ecardTableView = UITableView(frame: CGRect(x: 17, y: UINavigationController.accessibilityFrame().maxY, width: UIScreen.main.bounds.width - 35, height: UIScreen.main.bounds.height - 110), style: .grouped)
+    let emptyView = UIView(frame: CGRect(x: 17, y: 0, width: UIScreen.main.bounds.width - 35, height: 30 * UIScreen.main.bounds.height / 1920))
+    let ECardLabel = UILabel(frame: CGRect(x: 0, y: 30 * UIScreen.main.bounds.height / 1920, width: UIScreen.main.bounds.width - 35, height: 200))
     let Signs1 = UILabel(frame: CGRect(x: 0, y: 20, width: 10, height: 40))
     let DailyfeeLabel = UILabel(frame: CGRect(x: 15, y: 20, width: 100, height: 40))
     let DailyfeeButton = UIButton(frame: CGRect(x: UIScreen.main.bounds.width - 150, y: 400, width: 100, height: 40))
@@ -59,7 +60,7 @@ class NewFirstPageViewController: UIViewController {
     var HelpButton2 = UIButton(frame: CGRect(x: 0, y: 0, width: 200, height: 30))
     var TodayCosume = UILabel(frame: CGRect(x: 20, y: 100, width: 150, height: 40))
     var MonthConsume = UILabel(frame: CGRect(x: 20, y: 130, width: 200, height: 40))
-    var Id = UILabel(frame: CGRect(x: 280, y: 130, width: 140, height: 40))
+    var Id = UILabel(frame: CGRect(x: 280, y: 130, width: 300, height: 40))
     var Notice = UILabel(frame: CGRect(x: 80 + 50 * UIScreen.main.bounds.width / 1080, y: 20, width: 200, height: 30))
     var Balance = UILabel(frame: CGRect(x: 20, y: 50, width: 300, height: 55))
     var CardNum = UILabel(frame: CGRect(x: 20, y: 20, width: 60, height: 30))
@@ -67,6 +68,7 @@ class NewFirstPageViewController: UIViewController {
     var HeadView1 = UIView()
     var HeadView2 = UIView()
     var FootView = UIView()
+    var headerView0 = UIView()
     var Consume: Consume!
     var ConsumeDetail: ConsumeDetail!
     var DetailInformation: DetailInformation!
@@ -74,15 +76,18 @@ class NewFirstPageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        ecardTableView.tableHeaderView = ECardLabel
+        let leftButton = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(pop))
+        leftButton.image = UIImage.resizedImage(image: UIImage(named:"返回-1")!, scaledToSize: CGSize(width: 20, height: 20))
+        navigationItem.leftBarButtonItem = leftButton
+        headerView0.frame = CGRect(x: 17, y: 0, width: UIScreen.main.bounds.width - 35, height: 200 + 20 * UIScreen.main.bounds.height / 1920)
+        ecardTableView.tableHeaderView = headerView0
         ecardTableView.backgroundColor = .white
         let nowDate = NSDate()
         let formatter = DateFormatter()
-        formatter.dateFormat = "MM/dd "
+        formatter.dateFormat = "MM/ dd "
         let dateString = formatter.string(from: nowDate as Date)
         Date.text = dateString
-        
+        emptyView.backgroundColor = .white
         view.backgroundColor = .white
         navigationItem.title = "校园卡"
         navigationController?.navigationBar.tintColor = .black
@@ -95,15 +100,15 @@ class NewFirstPageViewController: UIViewController {
         ECardLabel.backgroundColor = MyColor.ColorHex("#ffeb86")
         ECardLabel.layer.masksToBounds = true
         ECardLabel.layer.cornerRadius = 20
-                let ecardImage = UIImage.resizedImage(image: UIImage(named: "ecard")!, scaledToSize: CGSize(width: 200, height: 190))
-                let ecardImageView = UIImageView(image: ecardImage)
-                ecardImageView.frame = CGRect(x: ECardLabel.frame.minX + ECardLabel.frame.width / 2 - 30, y: ECardLabel.frame.minY + 10, width: 215, height: 200)
-                ECardLabel.addSubview(ecardImageView)
+        let ecardImage = UIImage.resizedImage(image: UIImage(named: "ecard")!, scaledToSize: CGSize(width: 200, height: 190))
+        let ecardImageView = UIImageView(image: ecardImage)
+        ecardImageView.frame = CGRect(x: ECardLabel.frame.minX + ECardLabel.frame.width / 2 - 30, y: ECardLabel.frame.minY - 10, width: 215, height: 200)
+        ECardLabel.addSubview(ecardImageView)
         
         ecardTableView.delegate = self
         ecardTableView.dataSource = self
         //MARK: - look me
-//        ecardTableView.frame = view.bounds
+        //        ecardTableView.frame = view.bounds
         ecardTableView.showsVerticalScrollIndicator = false
         ecardTableView.allowsSelection = false
         Date.textColor = MyColor.ColorHex("#666666")
@@ -133,7 +138,7 @@ class NewFirstPageViewController: UIViewController {
         
         MoreMessageButton.setTitleColor(.gray, for: .normal)
         MoreMessageButton.titleLabel?.adjustsFontSizeToFitWidth = true
-//        FoldMessage.textAlignment = NSTextAlignment.center
+        //        FoldMessage.textAlignment = NSTextAlignment.center
         MoreMessageButton.addTarget(self, action: #selector(MoreMessage), for: .touchUpInside)
         HelpButton1.setTitle("补办校园卡流程说明", for: .normal)
         HelpButton1.setTitleColor(MyColor.ColorHex("#5e8dc5"), for: .normal)
@@ -154,8 +159,10 @@ class NewFirstPageViewController: UIViewController {
         ECardLabel.addSubview(Balance)
         ECardLabel.addSubview(CardNum)
         ECardLabel.addSubview(Notice)
+        headerView0.addSubview(emptyView)
+        headerView0.addSubview(ECardLabel)
         view.addSubview(ecardTableView)
-//        GetTotal()
+        //        GetTotal()
     }
     
     func refreshData() {
@@ -218,9 +225,11 @@ class NewFirstPageViewController: UIViewController {
             self.FoldMessage.textColor = MyColor.ColorHex("#b2b2b2")
             if(ConsumeDetail.data.count - 4 <= 0) {
                 self.scanButton.isHidden = true
+                self.FoldMessage.isHidden = true
+                footerViewHeight = 0
             }
             if(ConsumeDetail.data.count - 4 > 0) {
-                                self.scanButton.titleLabel?.textColor = MyColor.ColorHex("#5e8dc5")
+                self.scanButton.titleLabel?.textColor = MyColor.ColorHex("#5e8dc5")
                 self.scanButton.addTarget(self, action: #selector(self.More), for: .touchUpInside)
             }
             self.ecardTableView.reloadData()
@@ -271,10 +280,13 @@ class NewFirstPageViewController: UIViewController {
     @objc func refresh() {
         refreshData()
     }
-//    override func viewWillDisappear(_ animated: Bool) {
-//        navigationController?.isToolbarHidden = true
-//        navigationController?.isNavigationBarHidden = true
-//    }
+    @objc func pop() {
+        navigationController?.popViewController(animated: true)
+    }
+    //    override func viewWillDisappear(_ animated: Bool) {
+    //        navigationController?.isToolbarHidden = true
+    //        navigationController?.isNavigationBarHidden = true
+    //    }
 }
 extension NewFirstPageViewController: UITableViewDelegate {
     
@@ -318,12 +330,13 @@ extension NewFirstPageViewController: UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if (section == 0) {
+            
             return HeadView1
         } else {
             return HeadView2
         }
     }
-
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
             return 85
@@ -339,7 +352,7 @@ extension NewFirstPageViewController: UITableViewDataSource {
         }
     }
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 50
+        return CGFloat(footerViewHeight)
     }
     
 }

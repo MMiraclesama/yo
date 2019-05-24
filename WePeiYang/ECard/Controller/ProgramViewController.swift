@@ -40,6 +40,9 @@ class ProgramViewController: UIViewController {
     let imageView2 = UIImageView()
     override func viewDidLoad() {
         super.viewDidLoad()
+        let leftButton = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(pop))
+        leftButton.image = UIImage.resizedImage(image: UIImage(named:"返回-1")!, scaledToSize: CGSize(width: 20, height: 20))
+        navigationItem.leftBarButtonItem = leftButton
         firstLabel.frame = CGRect(x: 122 * UIScreen.main.bounds.width / 1080 + 10, y: programLabel.frame.maxY + 30 * UIScreen.main.bounds.height / 1920, width: 180, height: 40 * UIScreen.main.bounds.height / 1920)
         imageView0.image = image0
         proLabel.frame = CGRect(x: 83 * UIScreen.main.bounds.width / 1080, y: firstLabel.frame.maxY + 20 * UIScreen.main.bounds.height / 1920, width: UIScreen.main.bounds.width - 166 * UIScreen.main.bounds.width / 1080, height: 100 * UIScreen.main.bounds.height / 1920)
@@ -163,5 +166,8 @@ class ProgramViewController: UIViewController {
         view.addSubview(imageView2)
 
 
+    }
+    @objc func pop() {
+        navigationController?.popViewController(animated: true)
     }
 }

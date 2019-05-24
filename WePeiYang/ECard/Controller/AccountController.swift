@@ -32,7 +32,6 @@ class AccountViewController: UIViewController {
     var lastSelect: Int = 0
     var costLabel = UILabel() //消费
     var rechargeLabel = UILabel() // 充值
-    //MARK: - 此时term=6
     var lineScrollerLength: CGFloat = ScaleScreen.scaleWidth * CGFloat(215 * (Figure.term + 1))
     //折线图长度（可变）
     var cost = UILabel() //
@@ -60,8 +59,9 @@ class AccountViewController: UIViewController {
     var point = [CGPoint]()
     var scaleview: ScaleLabelView = ScaleLabelView()
     var lintView: EcardLineChartsView = EcardLineChartsView()
-    var sjsw: CGRect = CGRect(x: Device.width + 30, y: 470, width: 350, height: 26)
+    var sjsw: CGRect = CGRect(x: Device.width + 30, y: 470, width: 360, height: 26)
     var moneyOfYours: MoneyTest = MoneyTest()
+    var accountView: AccountView = AccountView()
     
     private var refreshButton: UIView? {
         let button = navigationItem.rightBarButtonItem?.value(forKey: "view") as? UIView
@@ -100,16 +100,22 @@ class AccountViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         view.backgroundColor = .white
         navigationController?.setNavigationBarHidden(false, animated: true)
-        navigationController?.navigationBar.barStyle = .black
+//        navigationController?.navigationBar.barStyle = .black
         navigationController?.navigationBar.tintColor = .black
-        navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.isTranslucent = true
         navigationController?.navigationBar.barTintColor = MyColor.ColorHex("#ffeb86")
-        
+        navigationItem.title = "流水查询"
+//        let backBtn = UIBarButtonItem(image: UIImage.resizedImage(image: UIImage(named: "返回-1")!, scaledToSize: CGSize(width: 25, height: 25)), style: .plain, target: self, action: nil)
+//        self.navigationItem.backBarButtonItem = backBtn
         let limage = UIImage.resizedImage(image: UIImage(named: "刷新")!, scaledToSize: CGSize(width: 25, height: 25))
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: limage, style: .plain, target: self, action: #selector(refresh))
         
-        self.accountTableview.frame = CGRect(x: 0, y: -20 , width: Device.width, height: Device.height)
+        let leftButton = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(pop))
+        leftButton.image = UIImage.resizedImage(image: UIImage(named:"返回-1")!, scaledToSize: CGSize(width: 20, height: 20))
+        navigationItem.leftBarButtonItem = leftButton
+        
+        self.accountTableview.frame = CGRect(x: 0, y: -40 , width: Device.width, height: Device.height * 3 / 4)
         self.accountTableview.delegate = self
         self.accountTableview.dataSource = self
         self.accountTableview.showsVerticalScrollIndicator = false
@@ -128,21 +134,22 @@ class AccountViewController: UIViewController {
     
     //设置label和button
     func addAllSubviews(){
-        DayLabel.frame = CGRect(x: Device.width / 2 - 50, y: 25, width: 100, height: 20)
+        DayLabel.frame = CGRect(x: Device.width / 2 - 50, y: 115, width: 100, height: 27)
         DayLabel.backgroundColor = MyColor.ColorHex("#ffeb86")
         DayLabel.text = "最近7天"
         DayLabel.textAlignment = NSTextAlignment.center
         DayLabel.layer.masksToBounds = true
-        DayLabel.layer.cornerRadius = 13
+        DayLabel.layer.cornerRadius = 15
         self.view.addSubview(DayLabel)
-        leftButton.frame = CGRect(x: DayLabel.frame.minX - 30, y: 25, width: 20, height: 20)
-        let lchangeimage = UIImage.resizedImage(image: UIImage(named: "选择三角左")!, scaledToSize: CGSize(width: 20, height: 20))
+        leftButton.frame = CGRect(x: DayLabel.frame.minX - 35, y: 115, width: 27, height: 27)
+        let lchangeimage = UIImage.resizedImage(image: UIImage(named: "选择三角左")!, scaledToSize: CGSize(width: 27, height: 27))
         leftButton.setImage(lchangeimage, for: .normal)
 //        leftButton.backgroundColor.
         leftButton.addTarget(self, action: #selector(LessList), for: .touchUpInside)
         self.view.addSubview(leftButton)
-        rightButton.frame = CGRect(x: DayLabel.frame.maxX + 12, y: 25, width: 20, height: 20)
-        let rchangeimage = UIImage.resizedImage(image: UIImage(named: "选择三角右")!, scaledToSize: CGSize(width: 20, height: 20))
+        rightButton.frame = CGRect(x: DayLabel.frame.maxX + 8, y: 115, width: 27, height: 27)
+        let rchangeimage = UIImage.resizedImage(image: UIImage(named: "选择三角右")!, scaledToSize: CGSize(width: 27, height: 27))
+        rightButton.setImage(UIImage.resizedImage(image: UIImage(named: "选择三角右")!, scaledToSize: CGSize(width: 27, height: 27)), for: .highlighted)
         rightButton.setImage(rchangeimage, for: .normal)
         rightButton.addTarget(self, action: #selector(MoreList), for: .touchUpInside)
         self.view.addSubview(rightButton)
@@ -164,20 +171,20 @@ class AccountViewController: UIViewController {
         messCostFront.layer.masksToBounds = true
         messCostFront.layer.cornerRadius = messCostFront.bounds.size.width / 2
         
-        messCost.frame = CGRect(x: messCostFront.frame.maxX + 2, y: messCostFront.frame.minY, width: 120, height: 10)
+        messCost.frame = CGRect(x: messCostFront.frame.maxX + 2, y: messCostFront.frame.minY, width: 105, height: 10)
         messCost.backgroundColor = .white
-        messCost.text = "食堂：\(num3)元"
-        messCost.font = UIFont.flexibleSystemFont(ofSize: 15)
+        messCost.text = "食堂:\(num3)元"
+        messCost.font = UIFont.flexibleSystemFont(ofSize: 13)
         
         marketCostFront.frame = CGRect(x: messCost.frame.maxX + 12 , y: cost.frame.maxY + 52, width: 10, height: 10)
         marketCostFront.backgroundColor = MyColor.ColorHex("#fff5c2")
         marketCostFront.layer.masksToBounds = true
         marketCostFront.layer.cornerRadius = messCostFront.bounds.size.width / 2
         
-        marketCost.frame = CGRect(x: marketCostFront.frame.maxX + 2, y: cost.frame.maxY + 52, width: 120, height: 10)
+        marketCost.frame = CGRect(x: marketCostFront.frame.maxX + 2, y: cost.frame.maxY + 52, width: 105, height: 10)
         marketCost.backgroundColor = .white
-        marketCost.text = "超市：\(num2)元"
-        marketCost.font = UIFont.flexibleSystemFont(ofSize: 15)
+        marketCost.text = "超市:\(num2)元"
+        marketCost.font = UIFont.flexibleSystemFont(ofSize: 13)
         
         otherCostFront.frame = CGRect(x: marketCost.frame.maxX + 2 , y: cost.frame.maxY + 52 , width: 10, height: 10)
         otherCostFront.backgroundColor = MyColor.ColorHex("#ffeb86")
@@ -186,8 +193,8 @@ class AccountViewController: UIViewController {
         
         otherCost.frame = CGRect(x: otherCostFront.frame.maxX + 2, y: cost.frame.maxY + 52 , width: 120, height: 10)
         otherCost.backgroundColor = .white
-        otherCost.text = "其他：\(num1)元"
-        otherCost.font = UIFont.flexibleSystemFont(ofSize: 15)
+        otherCost.text = "其他:\(num1)元"
+        otherCost.font = UIFont.flexibleSystemFont(ofSize: 13)
     }
     
     func addDateLabel() {
@@ -204,12 +211,11 @@ class AccountViewController: UIViewController {
     }
     //很多scrollerview
     func addScrollerView() {
-        scrollerview = UIScrollView(frame: CGRect(x: 0, y: 57, width: Device.width, height: Device.height * 2 / 3))
-        scrollerview.isPagingEnabled = true
+        scrollerview = UIScrollView(frame: CGRect(x: 0, y: 157, width: Device.width, height: Device.height * 3 / 4))
         scrollerview.backgroundColor = .white
         scrollerview.showsHorizontalScrollIndicator = false
         scrollerview.showsVerticalScrollIndicator = false
-        scrollerview.contentSize = CGSize(width: Device.width*2,height: Device.height )
+        scrollerview.contentSize = CGSize(width: Device.width*2,height: 0)
         scrollerview.contentOffset = CGPoint(x: 0, y: 0.0)
         scrollerview.delegate = self
         scrollerview.bounces = false
@@ -252,11 +258,11 @@ class AccountViewController: UIViewController {
     }
     
     func addOtherView() {
-        pointView = UIImageView(frame: CGRect(x: Device.width / 2  - 40, y: scrollerview.frame.maxY + 30, width: 30 * ScaleScreen.scaleWidth, height: 30 * ScaleScreen.scaleWidth))
+        pointView = UIImageView(frame: CGRect(x: Device.width / 2  - 40, y: scrollerview.frame.maxY + 10, width: 30 * ScaleScreen.scaleWidth, height: 30 * ScaleScreen.scaleWidth))
         pointView.image = UIImage.resizedImage(image: UIImage(named: "未标题-1")!, scaledToSize: CGSize(width: 30 * ScaleScreen.scaleWidth, height: 30 * ScaleScreen.scaleWidth))
         self.view.addSubview(pointView)
         
-        lineView = UIImageView(frame: CGRect(x: pointView.frame.maxX + 10, y: pointView.frame.minY, width: 100 * ScaleScreen.scaleWidth, height: 30 * ScaleScreen.scaleWidth))
+        lineView = UIImageView(frame: CGRect(x: pointView.frame.maxX + 15, y: pointView.frame.minY, width: 100 * ScaleScreen.scaleWidth, height: 30 * ScaleScreen.scaleWidth))
         lineView.image = UIImage.resizedImage(image: UIImage(named: "bottom2")!, scaledToSize: CGSize(width: 100 * ScaleScreen.scaleWidth, height: 30 * ScaleScreen.scaleWidth))
         self.view.addSubview(lineView)
         
@@ -289,18 +295,19 @@ class AccountViewController: UIViewController {
                 self.slideView.frame = frame
             })
         } else if scrollView == scrollerview {
+            self.accountTableview.isScrollEnabled = false
+            
             UIView.animate(withDuration: 0, animations: {
-                
                 let offset: CGPoint = scrollView.contentOffset
                 
                 var pointFrame: CGRect = self.pointView.frame
                 var lineFrame: CGRect = self.lineView.frame
                 
-                pointFrame.origin.x = Device.width / 2 - 40 + 2 * offset.x * (90 * ScaleScreen.scaleWidth - self.pointView.frame.width) / (scrollView.contentSize.width - scrollView.frame.size.width)
+                pointFrame.origin.x = Device.width / 2 - 40 + 2 * offset.x * (80 * ScaleScreen.scaleWidth - self.pointView.frame.width) / (scrollView.contentSize.width - scrollView.frame.size.width)
                 
                 let temp = 20 * offset.x * (90 * ScaleScreen.scaleWidth - self.lineView.frame.width) / (scrollView.contentSize.width - scrollView.frame.size.width)
                 
-                lineFrame.origin.x = self.pointView.frame.maxX + 20 + temp
+                lineFrame.origin.x = self.pointView.frame.maxX + 15 + temp
                 self.pointView.frame = pointFrame
                 self.lineView.frame = lineFrame
             })
@@ -315,6 +322,11 @@ class AccountViewController: UIViewController {
 //                    }
 //                }
 //            })
+        }
+    }
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if scrollView == scrollerview {
+            self.accountTableview.isScrollEnabled = true
         }
     }
     //刷新
@@ -361,11 +373,22 @@ class AccountViewController: UIViewController {
             sum2 = 0.0
             sum3 = 0.0
             sum4 = 0.0
-                self.messCost.text = "食堂：\(num3)元"
-                self.marketCost.text = "超市：\(num2)元"
-                self.otherCost.text = "其他：\(num1)元"
+            var temp = "\(num3)"
+            self.messCost.text = "食堂:\(temp.prefix(5))元"
+            temp = "\(num2)"
+            self.marketCost.text = "超市:\(temp.prefix(5))元"
+            temp = "\(num1)"
+            self.otherCost.text = "其他:\(temp.prefix(5))元"
+            if num4 < 1000.0 {
                 self.rechargeLabel.text = "充值：\(String(num4).prefix(5))元"
+            } else {
+                self.rechargeLabel.text = "充值：\(String(num4).prefix(6))元"
+            }
+            if num1 + num2 + num3 < 1000.0 {
                 self.costLabel.text = "消费：\(String(num1 + num2 + num3).prefix(5))元"
+            } else {
+                self.costLabel.text = "消费：\(String(num1 + num2 + num3).prefix(6))元"
+            }
                 self.scaleview.LabelScale(&self.messScale, &self.marketScale, &self.otherScale, num3, num2, num1, self.scaleview.myrect)
                 self.scrollerview.addSubview(self.messScale)
                 self.scrollerview.addSubview(self.marketScale)
@@ -434,21 +457,23 @@ class AccountViewController: UIViewController {
             self.lintView.AccountlineChartView.frame = CGRect(x:0, y: 0, width: self.lineScrollerLength, height: 623 * 1.15 / 3)
             self.dateScrollerView.contentSize = CGSize(width: self.lineScrollerLength, height: 40)
             self.dateScrollViewLeftLabel.text = String(lintchart.data2[lintchart.data2.count - Figure.term - 1].date).suffix(4).prefix(2) + "月"
-            self.lintView.setupLineChartView()
 
             for i in 0...Figure.term {
-                self.point.append(self.lintView.AccountlineChartView.getTransformer(forAxis: self.lintView.AccountlineChartView.data!.dataSets[0].axisDependency).pixelForValues(x: self.lintView.myentrys[i].x, y: self.lintView.myentrys[i].y))
-                let dateLabel = UILabel(frame: CGRect(x: self.point[i].x - 8, y: 0, width: 40, height: 40))
-                self.dateScrollerView.addSubview(dateLabel)
-                self.dateArray.append(dateLabel)
-                self.datetext.append(String(lintchart.data2[lintchart.data2.count - Figure.term - 1 + i].date.suffix(2)))
-                self.dateArray[i].text = self.datetext[i]
-                self.dateArray[i].textColor = MyColor.ColorHex("#ffd942")
+//                self.point.append(self.lintView.AccountlineChartView.getTransformer(forAxis: self.lintView.AccountlineChartView.data!.dataSets[0].axisDependency).pixelForValues(x: self.lintView.myentrys[i].x, y: self.lintView.myentrys[i].y))
+//                let dateLabel = UILabel(frame: CGRect(x: self.point[i].x - 8, y: 0, width: 40, height: 40))
+//                self.dateScrollerView.addSubview(dateLabel)
+//                self.dateArray.append(dateLabel)
+                self.lintView.labels.append(String(lintchart.data2[lintchart.data2.count - Figure.term - 1 + i].date.suffix(2)))
+//                self.datetext.append(String(lintchart.data2[lintchart.data2.count - Figure.term - 1 + i].date.suffix(2)))
+//                self.dateArray[i].text = self.datetext[i]
+//                self.dateArray[i].textColor = MyColor.ColorHex("#ffd942")
                 //MARK: - 计算变化点
 //                if lintchart.data2[lintchart.data2.count - Figure.term - 1 + i].date.suffix(2) > lintchart.data2[lintchart.data2.count - Figure.term + i].date.suffix(2) {
 //                    self.tempx.append(i + 1)
 //                }
             }
+            self.lintView.setupLineChartView()
+            self.lintView.initCharts()
         }, failure: { _ in
             
         })
@@ -461,8 +486,12 @@ class AccountViewController: UIViewController {
             refreshData()
             DayLabel.text = "最近7天"
             leftButton.isEnabled = false
+            leftButton.setImage(UIImage.resizedImage(image: UIImage(named: "选择三角左")!, scaledToSize: CGSize(width: 27, height: 27)), for: .normal)
             rightButton.backgroundColor = .white
             rightButton.isEnabled = true
+            rightButton.setImage(UIImage.resizedImage(image: UIImage(named: "选择三角右")!, scaledToSize: CGSize(width: 27, height: 27)), for: .normal)
+            rightButton.setImage(UIImage.resizedImage(image: UIImage(named: "选择三角右")!, scaledToSize: CGSize(width: 27, height: 27)), for: .highlighted)
+            rightButton.showsTouchWhenHighlighted = false
             self.lineScrollerLength = CGFloat(76 * (Figure.term + 1))
             break
         case 1:
@@ -470,9 +499,14 @@ class AccountViewController: UIViewController {
             refreshData()
             DayLabel.text = "最近15天"
             leftButton.backgroundColor = .white
+            leftButton.setImage(UIImage.resizedImage(image: UIImage(named: "选择三角左黄")!, scaledToSize: CGSize(width: 27, height: 27)), for: .normal)
+            leftButton.setImage(UIImage.resizedImage(image: UIImage(named: "选择三角左黄")!, scaledToSize: CGSize(width: 27, height: 27)), for: .highlighted)
             leftButton.isEnabled = true
             rightButton.backgroundColor = .white
             rightButton.isEnabled = true
+            rightButton.showsTouchWhenHighlighted = false
+            rightButton.setImage(UIImage.resizedImage(image: UIImage(named: "选择三角右")!, scaledToSize: CGSize(width: 27, height: 27)), for: .normal)
+            rightButton.setImage(UIImage.resizedImage(image: UIImage(named: "选择三角右")!, scaledToSize: CGSize(width: 27, height: 27)), for: .highlighted)
             self.lineScrollerLength = CGFloat(76 * (Figure.term + 1))
             break
         case 2:
@@ -481,8 +515,13 @@ class AccountViewController: UIViewController {
             DayLabel.text = "最近30天"
             leftButton.backgroundColor = .white
             leftButton.isEnabled = true
+            leftButton.setImage(UIImage.resizedImage(image: UIImage(named: "选择三角左黄")!, scaledToSize: CGSize(width: 27, height: 27)), for: .normal)
+            leftButton.setImage(UIImage.resizedImage(image: UIImage(named: "选择三角左黄")!, scaledToSize: CGSize(width: 27, height: 27)), for: .highlighted)
             rightButton.backgroundColor = .white
+            rightButton.showsTouchWhenHighlighted = false
             rightButton.isEnabled = true
+            rightButton.setImage(UIImage.resizedImage(image: UIImage(named: "选择三角右")!, scaledToSize: CGSize(width: 27, height: 27)), for: .normal)
+            rightButton.setImage(UIImage.resizedImage(image: UIImage(named: "选择三角右")!, scaledToSize: CGSize(width: 27, height: 27)), for: .highlighted)
             self.lineScrollerLength = CGFloat(76 * (Figure.term + 1))
             break
         default:
@@ -491,7 +530,10 @@ class AccountViewController: UIViewController {
             DayLabel.text = "最近60天"
             leftButton.backgroundColor = .white
             leftButton.isEnabled = true
+            leftButton.setImage(UIImage.resizedImage(image: UIImage(named: "选择三角左黄")!, scaledToSize: CGSize(width: 27, height: 27)), for: .normal)
+            leftButton.setImage(UIImage.resizedImage(image: UIImage(named: "选择三角左黄")!, scaledToSize: CGSize(width: 27, height: 27)), for: .highlighted)
             rightButton.isEnabled = false
+            rightButton.setImage(UIImage.resizedImage(image: UIImage(named: "选择三角右灰")!, scaledToSize: CGSize(width: 27, height: 27)), for: .normal)
             self.lineScrollerLength = CGFloat(76 * (Figure.term + 1))
             break
         }
@@ -499,6 +541,9 @@ class AccountViewController: UIViewController {
 }
 
 extension AccountViewController {
+    @objc func pop() {
+        navigationController?.popViewController(animated: true)
+    }
     @objc func refresh() {
         refreshData()
     }

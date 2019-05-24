@@ -12,6 +12,8 @@ import Alamofire
 let TurnoverUrl = "/ecard/turnover"
 let LintChartUrl = "/ecard/lineChart"
 
+
+
 struct ECardHelper {
     static func dataCard(url: String, success: (([String: Any])->())? = nil, failure: ((Error)->())? = nil) {
         Alamofire.request(url).responseJSON { response in
@@ -39,7 +41,14 @@ struct ECardHelper {
 
 struct GetConsumeHelper {
     static func GetConsume(success: @escaping (ConsumeDetail) -> Void, failure: @escaping (Error) -> Void) {
-        SolaSessionManager.solaSession(type: .get, url: TurnoverUrl, parameters: ["cardnum": "3018216142", "password": "629031", "term": "\(Figure.term)"], success: { dic in
+        var error: Error?
+        guard let username = TWTKeychain.username(for: .ecard),
+            let password = TWTKeychain.password(for: .ecard) else {
+                error = WPYCustomError.custom("请先绑定校园卡")
+//                callback([], error)
+                return
+        }
+        SolaSessionManager.solaSession(type: .get, url: TurnoverUrl, parameters: ["cardnum": username, "password": password, "term": "\(Figure.term)"], success: { dic in
             if let data = try? JSONSerialization.data(withJSONObject: dic, options: JSONSerialization.WritingOptions.init(rawValue: 0)),
                 let tuenover = try? ConsumeDetail(data: data) {
                 success(tuenover)
@@ -52,7 +61,7 @@ struct GetConsumeHelper {
 
 struct LintChartHelper {
     static func getLintChart(success: @escaping (LintChart) -> Void, failure: @escaping (Error) -> Void) {
-        SolaSessionManager.solaSession(type: .get, url: LintChartUrl, parameters: ["cardnum": "3018216142", "password": "629031"], success: { dic in
+        SolaSessionManager.solaSession(type: .get, url: LintChartUrl, parameters: ["cardnum": TWTKeychain.username(for: .ecard)!, "password": TWTKeychain.password(for: .ecard)!], success: { dic in
             if let data = try? JSONSerialization.data(withJSONObject: dic, options: JSONSerialization.WritingOptions.init(rawValue: 0)),
                 let lintchart = try? LintChart(data: data) {
                 success(lintchart)

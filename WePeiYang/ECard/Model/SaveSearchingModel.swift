@@ -36,7 +36,7 @@ struct SaveHelper {
 struct GetSaveHelper {
     static func GetIt(success: @escaping (DetailInformation)->(), failure: @escaping (Error)->()) {
 //        https://open.twtstudio.com/api/v1/ecard/profile?cardnum=3010000000&password=666666
-        SolaSessionManager.solaSession(type: .get, url: "/ecard/profile", parameters: ["cardnum": "3018216142", "password": "629031"], success: {
+        SolaSessionManager.solaSession(type: .get, url: "/ecard/profile", parameters: ["cardnum": TWTKeychain.username(for: .ecard)!, "password": TWTKeychain.password(for: .ecard)!], success: {
         dic in
         if let data = try? JSONSerialization.data(withJSONObject: dic, options: JSONSerialization.WritingOptions.init(rawValue: 0)), let detail = try? DetailInformation(data: data) {
             

@@ -22,6 +22,7 @@
 		045EBF0122840EAA00DBEA04 /* ScaleLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045EBF0022840EAA00DBEA04 /* ScaleLabelView.swift */; };
 		045EBF03228419E900DBEA04 /* EcardLineChartsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045EBF02228419E900DBEA04 /* EcardLineChartsView.swift */; };
 		045EBF0922847A6B00DBEA04 /* MoneyTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045EBF0822847A6B00DBEA04 /* MoneyTest.swift */; };
+		04748C0E2296A50F00D45AB9 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04748C0D2296A50F00D45AB9 /* AccountView.swift */; };
 		047A651322474A7600268AAA /* ConsumeDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047A651222474A7600268AAA /* ConsumeDetail.swift */; };
 		047A6515224757F100268AAA /* LintChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047A6514224757F100268AAA /* LintChart.swift */; };
 		047A651722475A8900268AAA /* AccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047A651622475A8900268AAA /* AccountController.swift */; };
@@ -348,6 +349,7 @@
 		045EBF0022840EAA00DBEA04 /* ScaleLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleLabelView.swift; sourceTree = "<group>"; };
 		045EBF02228419E900DBEA04 /* EcardLineChartsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EcardLineChartsView.swift; sourceTree = "<group>"; };
 		045EBF0822847A6B00DBEA04 /* MoneyTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyTest.swift; sourceTree = "<group>"; };
+		04748C0D2296A50F00D45AB9 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		047A651222474A7600268AAA /* ConsumeDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumeDetail.swift; sourceTree = "<group>"; };
 		047A6514224757F100268AAA /* LintChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LintChart.swift; sourceTree = "<group>"; };
 		047A651622475A8900268AAA /* AccountController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountController.swift; sourceTree = "<group>"; };
@@ -687,6 +689,7 @@
 				0434AEC52258A1150003898D /* AccountLineChartViewCell.swift */,
 				045EBF0022840EAA00DBEA04 /* ScaleLabelView.swift */,
 				045EBF02228419E900DBEA04 /* EcardLineChartsView.swift */,
+				04748C0D2296A50F00D45AB9 /* AccountView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1895,6 +1898,7 @@
 				DD0B75F72158C6ED009A392C /* PhoneBook.swift in Sources */,
 				365A8A281FB9CA1700B15443 /* ClassModel.swift in Sources */,
 				78FB9E97217AEEF4001DE39A /* MyLostFoundPageViewController.swift in Sources */,
+				04748C0E2296A50F00D45AB9 /* AccountView.swift in Sources */,
 				DD0B76262158CBA6009A392C /* GPAModel.swift in Sources */,
 				364BDF6C1FDAD41100E61B65 /* CardViewTransitionAnimator.swift in Sources */,
 				043D3F792285C0FC00E64476 /* QACell.swift in Sources */,

@@ -52,7 +52,7 @@ class ScaleLabelView: UIView {
         firstView.addSubview(llabel)
         secondView = UIView(frame: CGRect(x: firstView.frame.maxX - 1, y: miny, width: secondWidth, height: rect.height))
         secondView.backgroundColor = MyColor.ColorHex("#fff5c2")
-        mlabel = UILabel(frame: CGRect(x: firstView.frame.maxX + secondWidth / 4, y: miny, width: 3 * secondWidth / 4 , height: rect.height))
+        mlabel = UILabel(frame: CGRect(x: firstView.frame.maxX + secondWidth / 4, y: miny + 3, width: 3 * secondWidth / 4 , height: rect.height))
         mlabel.text = String(100 * secondData/totalData).prefix(2) + "%"
         mlabel.textAlignment = NSTextAlignment.center
         mlabel.sizeToFit()

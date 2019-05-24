@@ -10,7 +10,7 @@ import UIKit
 import Charts
 
 class EcardLineChartsView: UIView {
-    var labels: [String]!
+    var labels = [String]()
     var lastSelect: Int = 0
     var lintchart: LintChart!
     var tuenover: ConsumeDetail!
@@ -28,14 +28,14 @@ class EcardLineChartsView: UIView {
         accountLineChartView.leftAxis.drawGridLinesEnabled = false
         //MARK: - MAYBE
         accountLineChartView.xAxis.drawLabelsEnabled = true
-        accountLineChartView.leftAxis.drawLabelsEnabled = false
+        accountLineChartView.leftAxis.drawLabelsEnabled = true
         accountLineChartView.rightAxis.enabled = false
         accountLineChartView.xAxis.drawGridLinesEnabled = false
         // -1 for the fucking top border
         accountLineChartView.setViewPortOffsets(left: 0, top: -1, right: 0, bottom: 0)
         accountLineChartView.setExtraOffsets(left: 0, top: -1, right: 0, bottom: 0)
         accountLineChartView.chartDescription = nil
-        accountLineChartView.drawBordersEnabled = false
+        accountLineChartView.drawBordersEnabled = true 
         accountLineChartView.borderLineWidth = 0
         accountLineChartView.isUserInteractionEnabled = true
         accountLineChartView.borderColor = .white
@@ -52,8 +52,9 @@ class EcardLineChartsView: UIView {
         //FIXME: - 改大一些
         let image = UIImage.resizedImage(image: UIImage(named: "锚点")!, scaledToSize: CGSize(width: 20, height: 20))
         for index in 0...Figure.term  {
-            let entry = ChartDataEntry(x: Double(index), y: Double(lintchart.data2[lintchart.data2.count - Figure.term - 1 + index].count) as! Double , icon: image )
+            let entry = ChartDataEntry(x: Double(index), y: Double(lintchart.data2[lintchart.data2.count - Figure.term - 1 + index].count) as! Double, icon: image )
             entrys.append(entry)
+            
             myentrys.append(entry)
         }
         
@@ -80,7 +81,15 @@ class EcardLineChartsView: UIView {
         AccountlineChartView.zoomOut()
         AccountlineChartView.zoomToCenter(scaleX: 1.2, scaleY: 1)
     }
-    
+    func initCharts() {
+        let xAxis = AccountlineChartView.xAxis
+        xAxis.labelPosition = XAxis.LabelPosition.bottom
+        xAxis.labelTextColor = MyColor.ColorHex("#ffd942")!
+        xAxis.valueFormatter = ArrayIndexValueFormatter(labels: labels)
+        xAxis.axisMinimum = 0
+        xAxis.setLabelCount(labels.count, force: true)
+        xAxis.axisMaximum = Double(labels.count)
+    }
 }
 
 extension EcardLineChartsView: ChartViewDelegate {
@@ -98,7 +107,7 @@ extension EcardLineChartsView: ChartViewDelegate {
             _ = dataSets[1].addEntry(entry)
         } else {
             // add another dataSet for the only selected entry
-            let dataSetSelected = LineChartDataSet(values: [entry], label: nil)
+            let dataSetSelected = LineChartDataSet(values: [entry], label: labels[Int(entry.x)])
             dataSetSelected.circleRadius = 11
             dataSetSelected.drawValuesEnabled = false
             dataSetSelected.circleHoleColor = MyColor.ColorHex("#fff9da")
@@ -117,8 +126,8 @@ extension EcardLineChartsView: ChartViewDelegate {
         let point = AccountlineChartView.getTransformer(forAxis: AccountlineChartView.data!.dataSets[0].axisDependency).pixelForValues(x: entry.x, y: entry.y)
         let image = UIImage(named: "bubble")!
         let bubbleView = UIImageView(image: image)
-        bubbleView.width = 115
-        bubbleView.height = 115
+        bubbleView.width = 100
+        bubbleView.height = 70
         bubbleView.y = point.y + 10
         bubbleView.center.x = point.x
         bubbleView.contentMode = .scaleToFill
@@ -132,8 +141,8 @@ extension EcardLineChartsView: ChartViewDelegate {
         }
         
         let moneyLabel = UILabel(text: moneynum, color: .black, fontSize: 12)
-        moneyLabel.font = UIFont.systemFont(ofSize: 12, weight: UIFont.Weight.thin)
-        moneyLabel.frame = CGRect(x: 21.5, y: 32.5 + upsidedownOffset, width: 125, height: 20)
+        moneyLabel.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.thin)
+        moneyLabel.frame = CGRect(x: 22.5, y: 32.5 + upsidedownOffset, width: 125, height: 20)
         bubbleView.addSubview(moneyLabel)
         
         bubbleView.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
@@ -145,7 +154,7 @@ extension EcardLineChartsView: ChartViewDelegate {
 }
 
 class ArrayIndexValueFormatter: IAxisValueFormatter {
-    var labels: [String]
+    var labels = [String]()
     init(labels: [String]) {
         self.labels = labels
     }

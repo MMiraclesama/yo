@@ -36,7 +36,7 @@ struct DailyDetailHelper {
 struct GetDailyDetailHelper {
     static func GetThat(success: @escaping (Consume)->(), failure: @escaping (Error)->()) {
         //        Mark:url有两个没有改
-        SolaSessionManager.solaSession(type: .get, url: "/ecard/total", parameters: ["cardnum": "3018216126", "password": "211005"], success: { dic in
+        SolaSessionManager.solaSession(type: .get, url: "/ecard/total", parameters: ["cardnum": TWTKeychain.username(for: .ecard)!, "password": TWTKeychain.password(for: .ecard)!], success: { dic in
     if let data = try? JSONSerialization.data(withJSONObject: dic, options: JSONSerialization.WritingOptions.init(rawValue: 0)), let detail = try? Consume(data: data) {
         success(detail)
     }
