@@ -61,7 +61,7 @@ class AccountViewController: UIViewController {
     var lintView: EcardLineChartsView = EcardLineChartsView()
     var sjsw: CGRect = CGRect(x: Device.width + 30, y: 470, width: 360, height: 26)
     var moneyOfYours: MoneyTest = MoneyTest()
-    var accountView: AccountView = AccountView()
+//    var accountView: AccountView = AccountView()
     
     private var refreshButton: UIView? {
         let button = navigationItem.rightBarButtonItem?.value(forKey: "view") as? UIView
@@ -141,6 +141,7 @@ class AccountViewController: UIViewController {
         DayLabel.layer.masksToBounds = true
         DayLabel.layer.cornerRadius = 15
         self.view.addSubview(DayLabel)
+        
         leftButton.frame = CGRect(x: DayLabel.frame.minX - 35, y: 115, width: 27, height: 27)
         let lchangeimage = UIImage.resizedImage(image: UIImage(named: "选择三角左")!, scaledToSize: CGSize(width: 27, height: 27))
         leftButton.setImage(lchangeimage, for: .normal)
@@ -205,7 +206,7 @@ class AccountViewController: UIViewController {
         self.scrollerview.addSubview(dateScrollViewRightLabel)
         
         dateScrollViewLeftLabel.frame = CGRect(x: dateScrollerView.frame.minX - 30, y: dateScrollerView.frame.minY + 7, width: 40, height: dateScrollerView.frame.height)
-        dateScrollViewLeftLabel.textColor = MyColor.ColorHex("#e3cca1")
+        dateScrollViewLeftLabel.textColor = UIColor(hex6: 0xe3cca1)
         dateScrollViewLeftLabel.backgroundColor = .white
         self.scrollerview.addSubview(dateScrollViewLeftLabel)
     }

@@ -73,10 +73,10 @@ class EcardLineChartsView: UIView {
         dataSet.drawCircleHoleEnabled = false
         dataSet.drawFilledEnabled = true
         dataSet.setDrawHighlightIndicators(false)
-        dataSet.fillColor = MyColor.ColorHex("#ffeb86")!
+        dataSet.fillColor = UIColor(hex6: 0xffeb86)
         dataSet.fillAlpha = 1
         dataSet.lineWidth = 2
-        dataSet.setColor(MyColor.ColorHex("#ffe043")!)
+        dataSet.setColor(UIColor(hex6: 0xffe043))
         AccountlineChartView.data = LineChartData(dataSet: dataSet)
         AccountlineChartView.zoomOut()
         AccountlineChartView.zoomToCenter(scaleX: 1.2, scaleY: 1)
@@ -84,7 +84,8 @@ class EcardLineChartsView: UIView {
     func initCharts() {
         let xAxis = AccountlineChartView.xAxis
         xAxis.labelPosition = XAxis.LabelPosition.bottom
-        xAxis.labelTextColor = MyColor.ColorHex("#ffd942")!
+        xAxis.labelTextColor = UIColor(hex6: 0xffd942)
+//        IndexAxisValueFormatter(values: <#T##[String]#>)
         xAxis.valueFormatter = ArrayIndexValueFormatter(labels: labels)
         xAxis.axisMinimum = 0
         xAxis.setLabelCount(labels.count, force: true)
