@@ -25,7 +25,7 @@ class HelpViewController: UIViewController {
         WPYLabel.text = "微北洋 - 校园卡"
         WPYLabel.font = UIFont.flexibleSystemFont(ofSize: 13)
         WPYLabel.textAlignment = NSTextAlignment.center
-        WPYLabel.textColor = MyColor.ColorHex("#b9b9b9")
+        WPYLabel.textColor = UIColor(hex6: 0xb9b9b9)
         QATableView.delegate = self
         QATableView.dataSource = self
         navigationItem.title = "校园卡"
@@ -34,95 +34,52 @@ class HelpViewController: UIViewController {
         let leftButton = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(pop))
         leftButton.image = UIImage.resizedImage(image: UIImage(named:"返回-1")!, scaledToSize: CGSize(width: 20, height: 20))
         navigationItem.leftBarButtonItem = leftButton
+        
+//        self.QATableView.rowHeight = UITableViewAutomaticDimension
+        self.QATableView.estimatedRowHeight = 230
+        self.QATableView.rowHeight = UITableViewAutomaticDimension
         view.addSubview(WPYLabel)
         view.addSubview(QATableView)
-        
     }
 }
 
 
 extension HelpViewController: UITableViewDelegate {
-    
+//    func esi
 }
 extension HelpViewController: UITableViewDataSource {
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 9
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = DetailInformationElementCell()
+        
         cell.myTextLabel.text = question[indexPath.row]
         cell.myDetailTextLabel.text = answer[indexPath.row]
-        cell.myTextLabel.textColor = MyColor.ColorHex("#222222")
-        cell.myDetailTextLabel.textColor = MyColor.ColorHex("#888888")
+        cell.myTextLabel.textColor = UIColor(hex6: 0x222222)
+        cell.myDetailTextLabel.textColor = UIColor(hex6: 0x888888)
         cell.myImageView.image = UIImage(named: "问题")
-        if indexPath.row == 1 || indexPath.row == 2 {
-            cell.myTextLabel.frame = CGRect(x: 122 * UIScreen.main.bounds.width / 1080, y: 25 * UIScreen.main.bounds.height / 1920, width: UIScreen.main.bounds.width - 244 * UIScreen.main.bounds.width / 1080, height: 90 * UIScreen.main.bounds.height / 1920)
-            cell.myTextLabel.reloadInputViews()
-            cell.myImageView.frame = CGRect(x: 78 * UIScreen.main.bounds.width / 1080, y: 40 * UIScreen.main.bounds.height / 1920, width: 37 * UIScreen.main.bounds.height / 1920, height: 37 * UIScreen.main.bounds.height / 1920)
-            cell.myImageView.reloadInputViews()
-        }
-        if indexPath.row == 0{
-            cell.myDetailTextLabel.frame = CGRect(x: 85 * UIScreen.main.bounds.width / 1080, y: 55 * UIScreen.main.bounds.height / 1920, width: UIScreen.main.bounds.width - 244 * UIScreen.main.bounds.width / 1080, height: 260)
-        }
-        if indexPath.row == 1{
-            cell.myDetailTextLabel.frame = CGRect(x: 85 * UIScreen.main.bounds.width / 1080, y: 90 * UIScreen.main.bounds.height / 1920, width: UIScreen.main.bounds.width - 244 * UIScreen.main.bounds.width / 1080, height: 300)
-        }
-        if indexPath.row == 2 {
-            cell.myDetailTextLabel.frame = CGRect(x: 85 * UIScreen.main.bounds.width / 1080, y: 120 * UIScreen.main.bounds.height / 1920, width: UIScreen.main.bounds.width - 244 * UIScreen.main.bounds.width / 1080, height: 150)
-        }
-        if indexPath.row == 3 {
-            cell.myDetailTextLabel.frame = CGRect(x: 85 * UIScreen.main.bounds.width / 1080, y: 75 * UIScreen.main.bounds.height / 1920, width: UIScreen.main.bounds.width - 244 * UIScreen.main.bounds.width / 1080, height: 80)
-        }
-        if indexPath.row == 4 {
-            cell.myDetailTextLabel.frame = CGRect(x: 85 * UIScreen.main.bounds.width / 1080, y: 75 * UIScreen.main.bounds.height / 1920, width: UIScreen.main.bounds.width - 244 * UIScreen.main.bounds.width / 1080, height: 220)
-        }
-        if indexPath.row == 5 {
-            cell.myDetailTextLabel.frame = CGRect(x: 85 * UIScreen.main.bounds.width / 1080, y: 60 * UIScreen.main.bounds.height / 1920, width: UIScreen.main.bounds.width - 244 * UIScreen.main.bounds.width / 1080, height: 220)
-        }
-        if indexPath.row == 6 {
-            cell.myDetailTextLabel.frame = CGRect(x: 85 * UIScreen.main.bounds.width / 1080, y: 60 * UIScreen.main.bounds.height / 1920, width: UIScreen.main.bounds.width - 244 * UIScreen.main.bounds.width / 1080, height: 180)
-        }
-        if indexPath.row == 6 {
-            cell.myDetailTextLabel.frame = CGRect(x: 85 * UIScreen.main.bounds.width / 1080, y: 55 * UIScreen.main.bounds.height / 1920, width: UIScreen.main.bounds.width - 244 * UIScreen.main.bounds.width / 1080, height: 190)
-        }
-        if indexPath.row == 7 {
-            cell.myDetailTextLabel.frame = CGRect(x: 85 * UIScreen.main.bounds.width / 1080, y: 55 * UIScreen.main.bounds.height / 1920, width: UIScreen.main.bounds.width - 244 * UIScreen.main.bounds.width / 1080, height: 210)
-        }
-        if indexPath.row == 8 {
-            cell.myDetailTextLabel.frame = CGRect(x: 85 * UIScreen.main.bounds.width / 1080, y: 55 * UIScreen.main.bounds.height / 1920, width: UIScreen.main.bounds.width - 244 * UIScreen.main.bounds.width / 1080, height: 150)
-        }
+        
+        cell.myTextLabel.sizeToFit()
+        cell.myDetailTextLabel.sizeToFit()
+        
         return cell
     }
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch indexPath.row {
-        case 0:
-            return 280
-        case 1:
-            return 350
-        case 2:
-            return 220
-        case 3:
-            return 130
-        case 4:
-            return 260
-        case 5:
-            return 250
-        case 6:
-            return 220
-        case 7:
-            return 240
-        default:
-            return 190
-        }
+        let msg1 = answer[indexPath.row] + question[indexPath.row]
+        
+        let size = NSString(string: msg1).boundingRect(with: CGSize(width: UIScreen.main.bounds.width, height: CGFloat(MAXFLOAT)), options: .usesLineFragmentOrigin, attributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 18)], context: nil).size
+        return size.height + 50
     }
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UILabel()
         view.backgroundColor = .white
         view.text = "补办校园卡常见问题"
         view.font = UIFont.flexibleSystemFont(ofSize: 19)
-        view.textColor = MyColor.ColorHex("#222222")
+        view.textColor = UIColor(hex6: 0x222222)
         view.textAlignment = .center
         return view
     }

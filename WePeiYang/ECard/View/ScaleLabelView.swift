@@ -8,65 +8,81 @@
 
 import UIKit
 
-struct MyColor {
-    static func ColorHex(_ color: String) -> UIColor? {
-        if color.count <= 0 || color.count != 7 || color == "(null)" || color == "<null>" {
-            return nil
-        }
-        var red: UInt32 = 0x0
-        var green: UInt32 = 0x0
-        var blue: UInt32 = 0x0
-        let redString = String(color[color.index(color.startIndex, offsetBy: 1)...color.index(color.startIndex, offsetBy: 2)])
-        let greenString = String(color[color.index(color.startIndex, offsetBy: 3)...color.index(color.startIndex, offsetBy: 4)])
-        let blueString = String(color[color.index(color.startIndex, offsetBy: 5)...color.index(color.startIndex, offsetBy: 6)])
-        Scanner(string: redString).scanHexInt32(&red)
-        Scanner(string: greenString).scanHexInt32(&green)
-        Scanner(string: blueString).scanHexInt32(&blue)
-        let hexColor = UIColor.init(red: CGFloat(red)/255.0, green: CGFloat(green)/255.0, blue: CGFloat(blue)/255.0, alpha: 1)
-        return hexColor
-    }
-}
-
 class ScaleLabelView: UIView {
-    var llabel = UILabel()
-    var mlabel = UILabel()
-    var rlabel = UILabel()
-    var myrect: CGRect!
+    let firstView = UIView()
+    let secondView = UIView()
+    let thirdView = UIView()
+    let llabel = UILabel()
+    let mlabel = UILabel()
+    let rlabel = UILabel()
     
-    func LabelScale(_ firstView: inout UIView, _ secondView: inout UIView, _ thirdView: inout UIView, _ firstData: Double, _ secondData: Double, _ thirdData: Double, _ rect: CGRect) {
+    func LabelScale( _ firstData: Double, _ secondData: Double, _ thirdData: Double){
         let totalData: Double = firstData + secondData + thirdData
-        let firstWidth = rect.size.width * CGFloat(firstData / totalData)
-        let secondWidth = rect.size.width * CGFloat(secondData / totalData)
-        let thirdWidth = rect.size.width * CGFloat(thirdData / totalData)
-        let minx = rect.minX
-        let miny = rect.minY
+        let firstWidth = (Device.width - 56) * CGFloat(firstData / totalData)
+        let secondWidth = (Device.width - 56) * CGFloat(secondData / totalData)
+        let thirdWidth = (Device.width - 56) * CGFloat(thirdData / totalData)
         
-        firstView = UIView(frame: CGRect(x: minx, y: miny, width: firstWidth, height: rect.height))
-        firstView.backgroundColor = MyColor.ColorHex("#f8d316")
-        llabel = UILabel(frame: CGRect(x: minx + firstWidth / 4 + 1, y: miny, width: 3 * firstWidth / 4, height: rect.height))
-        let temptext: String = String(100 * firstData / totalData)
-        llabel.text = temptext.prefix(2) + "%"
+        firstView.backgroundColor = UIColor(hex6: 0xf8d316)
+        self.addSubview(firstView)
+        firstView.snp.makeConstraints { make in
+            make.left.equalTo(self.snp.left).inset(28)
+            make.centerY.equalTo(self.snp.centerY).inset(self.height / 4)
+            make.width.equalTo(firstWidth)
+            make.top.equalTo(self.snp.top)
+            make.bottom.equalTo(self.snp.bottom)
+        }
+        
+        llabel.text = String(100 * firstData / totalData).prefix(2) + "%"
         llabel.textAlignment = NSTextAlignment.center
-        llabel.textColor = UIColor.black
-        llabel.backgroundColor = MyColor.ColorHex("#f8d316")
-        firstView.addSubview(llabel)
-        secondView = UIView(frame: CGRect(x: firstView.frame.maxX - 1, y: miny, width: secondWidth, height: rect.height))
-        secondView.backgroundColor = MyColor.ColorHex("#fff5c2")
-        mlabel = UILabel(frame: CGRect(x: firstView.frame.maxX + secondWidth / 4, y: miny + 3, width: 3 * secondWidth / 4 , height: rect.height))
+        llabel.textColor = UIColor(hex6: 0x666666)
+        llabel.backgroundColor = UIColor(hex6: 0xf8d316)
+        self.addSubview(llabel)
+        llabel.snp.makeConstraints { make in
+            make.center.equalTo(firstView.snp.center)
+            make.edges.equalTo(firstView).inset(UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20))
+        }
+       
+        secondView.backgroundColor = UIColor(hex6: 0xfff5c2)
+        self.addSubview(secondView)
+        secondView.snp.makeConstraints { make in
+            make.left.equalTo(firstView.snp.right)
+            make.centerY.equalTo(self.snp.centerY).inset(self.height / 4)
+            make.width.equalTo(secondWidth)
+            make.top.equalTo(self.snp.top)
+            make.bottom.equalTo(self.snp.bottom)
+        }
+        
         mlabel.text = String(100 * secondData/totalData).prefix(2) + "%"
         mlabel.textAlignment = NSTextAlignment.center
         mlabel.sizeToFit()
         mlabel.textColor = .black
-        mlabel.backgroundColor = MyColor.ColorHex("#fff5c2")
-        secondView.addSubview(mlabel)
+        mlabel.backgroundColor = UIColor(hex6: 0xfff5c2)
+        self.addSubview(mlabel)
+        mlabel.snp.makeConstraints { make in
+            make.center.equalTo(secondView.snp.center)
+            make.width.equalTo(secondView.snp.width).inset(20)
+            make.height.equalTo(secondView.snp.height)
+        }
         
-        thirdView = UIView(frame: CGRect(x: secondView.frame.maxX, y: miny, width: thirdWidth, height: rect.height))
-        thirdView.backgroundColor = MyColor.ColorHex("ffeb86")
-        rlabel = UILabel(frame: CGRect(x: secondView.frame.maxX + thirdWidth / 4, y: miny, width: 3 * thirdWidth / 4, height: rect.height))
+        thirdView.backgroundColor = UIColor(hex6: 0xffeb86)
+        self.addSubview(thirdView)
+        thirdView.snp.makeConstraints { make in
+            make.left.equalTo(secondView.snp.right)
+            make.centerY.equalTo(self.snp.centerY).inset(self.height / 4)
+            make.width.equalTo(thirdWidth)
+            make.top.equalTo(self.snp.top)
+            make.bottom.equalTo(self.snp.bottom)
+        }
+       
         rlabel.text = String(100 * thirdData/totalData).prefix(2) + "%"
         rlabel.textColor = .black
-        rlabel.backgroundColor = MyColor.ColorHex("ffeb86")
+        rlabel.backgroundColor = UIColor(hex6: 0xffeb86)
         thirdView.addSubview(rlabel)
+        rlabel.snp.makeConstraints { make in
+            make.center.equalTo(thirdView.snp.center)
+            make.width.equalTo(thirdView.snp.width).inset(20)
+            make.height.equalTo(thirdView.height)
+        }
         var tempView: UIView = UIView()
         if firstData != 0 {
             tempView = firstView
@@ -75,9 +91,9 @@ class ScaleLabelView: UIView {
         }else if firstData == 0 && secondData == 0 && thirdData != 0 {
             tempView = thirdView
         }else{
-            tempView = UIView(frame: rect)
+            tempView = self
         }
-        let leftbezierPath = UIBezierPath(roundedRect: tempView.bounds, byRoundingCorners: [.bottomLeft,.topLeft], cornerRadii: CGSize(width: rect.height / 2, height: rect.height / 2))
+        let leftbezierPath = UIBezierPath(roundedRect: tempView.bounds, byRoundingCorners: [.bottomLeft,.topLeft], cornerRadii: CGSize(width: self.height / 2, height: self.height / 2))
         let leftshape: CAShapeLayer = CAShapeLayer()
         tempView.layer.mask = leftshape
         leftshape.fillColor = tempView.backgroundColor?.cgColor
@@ -93,9 +109,9 @@ class ScaleLabelView: UIView {
         }else if thirdData == 0 && secondData == 0 && firstData != 0 {
             tempView = firstView
         }else{
-            tempView = UIView(frame: rect)
+            tempView = self
         }
-        let rightbezierPath = UIBezierPath(roundedRect: tempView.bounds, byRoundingCorners: [.bottomRight,.topRight], cornerRadii: CGSize(width: rect.height / 2, height: rect.height / 2))
+        let rightbezierPath = UIBezierPath(roundedRect: tempView.bounds, byRoundingCorners: [.bottomRight,.topRight], cornerRadii: CGSize(width: self.height / 2, height: self.height / 2))
         let rightshape: CAShapeLayer = CAShapeLayer()
         rightshape.fillColor = tempView.backgroundColor?.cgColor
         rightshape.path = rightbezierPath.cgPath
@@ -104,3 +120,4 @@ class ScaleLabelView: UIView {
         tempView.layer.addSublayer(rightshape)
     }
 }
+

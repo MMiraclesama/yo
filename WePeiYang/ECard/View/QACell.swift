@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SnapKit
+
 class DetailInformationElementCell: UITableViewCell {
     let myTextLabel = UILabel()
     let myDetailTextLabel = UILabel()
@@ -17,10 +19,26 @@ class DetailInformationElementCell: UITableViewCell {
     convenience init() {
         self.init(style: .default, reuseIdentifier: "QATableViewCell")
         
-        
-        myTextLabel.frame = CGRect(x: 122 * UIScreen.main.bounds.width / 1080, y: 25 * UIScreen.main.bounds.height / 1920, width: UIScreen.main.bounds.width - 244 * UIScreen.main.bounds.width / 1080, height: 37 * UIScreen.main.bounds.height / 1920)
-        myDetailTextLabel.frame = CGRect(x: 85 * UIScreen.main.bounds.width / 1080, y: 55 * UIScreen.main.bounds.height / 1920, width: UIScreen.main.bounds.width - 244 * UIScreen.main.bounds.width / 1080, height: 250)
-        myImageView.frame = CGRect(x: 78 * UIScreen.main.bounds.width / 1080, y: 25 * UIScreen.main.bounds.height / 1920, width: 37 * UIScreen.main.bounds.height / 1920, height: 37 * UIScreen.main.bounds.height / 1920)
+        contentView.addSubview(myTextLabel)
+        contentView.addSubview(myDetailTextLabel)
+        contentView.addSubview(myImageView)
+        myImageView.snp.makeConstraints { (make) in
+            make.top.equalTo(20)
+            make.left.equalTo(10)
+            make.width.equalTo(20)
+            make.height.equalTo(20)
+        }
+        myTextLabel.snp.makeConstraints { (make) in
+            make.left.equalTo(self.myImageView.snp.right).offset(10)
+            make.top.equalTo(self.myImageView.snp.top)
+            make.right.equalToSuperview().offset(-20)
+        }
+        myDetailTextLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(self.myTextLabel.snp.bottom).offset(10)
+            make.left.equalTo(self.myImageView.snp.left).offset(10)
+            make.right.equalToSuperview().offset(-20)
+        }
+
         myTextLabel.lineBreakMode = .byWordWrapping
         myTextLabel.numberOfLines = 0
         //        myTextLabel.sizeToFit()
@@ -28,9 +46,7 @@ class DetailInformationElementCell: UITableViewCell {
         myDetailTextLabel.lineBreakMode = .byWordWrapping
         myDetailTextLabel.numberOfLines = 0
         //        myDetailTextLabel.sizeToFit()
-        contentView.addSubview(myTextLabel)
-        contentView.addSubview(myDetailTextLabel)
-        contentView.addSubview(myImageView)
+        
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -23,6 +23,8 @@ class TwTUser: Codable {
     var libBindingState: Bool = false
     var bicycleBindingState: Bool = false
     var WLANBindingState: Bool = false
+    
+    var QRcodeBindingState: Bool = false
 
     required init(from decoder: Decoder) {
         do {
@@ -39,6 +41,7 @@ class TwTUser: Codable {
             libBindingState = try container.decodeIfPresent(Bool.self, forKey: .libBindingState) ?? false
             bicycleBindingState = try container.decodeIfPresent(Bool.self, forKey: .bicycleBindingState) ?? false
             WLANBindingState = try container.decodeIfPresent(Bool.self, forKey: .WLANBindingState) ?? false
+            QRcodeBindingState = try container.decode(Bool.self, forKey: .QRcodeBindingState) 
         } catch let err {
             log(err)
         }
@@ -79,6 +82,8 @@ class TwTUser: Codable {
         libBindingState = user.libBindingState
         bicycleBindingState = user.bicycleBindingState
         WLANBindingState = user.WLANBindingState
+        
+        QRcodeBindingState = user.QRcodeBindingState
     }
 
     func delete() {

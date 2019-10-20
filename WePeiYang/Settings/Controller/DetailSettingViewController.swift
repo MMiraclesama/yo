@@ -183,11 +183,11 @@ extension DetailSettingViewController: UITableViewDelegate {
             let defaultButton = DestructiveButton(title: action, dismissOnTap: true) {
                 UserDefaults.standard.set(!status, forKey: ARModeEnabledKey)
                 if (!status) {
-                    if #available(iOS 11.0, *) {
-                        let arWindow = ARKeyWindow()
-                        (UIApplication.shared.delegate as? AppDelegate)?.arWindow = arWindow
-                        arWindow.makeKeyAndVisible()
-                    }
+//                    if #available(iOS 11.0, *) {
+//                        let arWindow = ARKeyWindow()
+//                        (UIApplication.shared.delegate as? AppDelegate)?.arWindow = arWindow
+//                        arWindow.makeKeyAndVisible()
+//                    }
                 } else {
                     SwiftMessages.showSuccessMessage(body: action + "成功，请手动重启应用")
                     return

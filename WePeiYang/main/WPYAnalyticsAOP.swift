@@ -150,6 +150,8 @@ extension UITableView {
                     } else if row == 4 {
                         //log("【设置】点击校园卡")
                         MTA.trackCustomKeyValueEvent("click", props: ["name": "【设置】点击校园卡"])
+                    } else if row == 5 {
+                        MTA.trackCustomKeyValueEvent("click", props: ["name": "【设置】点击二维码"])
                     }
                 }
             case is DetailSettingViewController:

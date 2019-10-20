@@ -68,21 +68,21 @@ class ProgramViewController: UIViewController {
         signs12.frame = CGRect(x: signs4.frame.maxX + CGFloat(UIScreen.main.bounds.width / 108), y: signs8.frame.maxY, width: signs5.frame.maxX - signs9.frame.maxX, height: signs3.frame.maxY - signs8.frame.maxY)
         WPYLabel.frame = CGRect(x: UIScreen.main.bounds.width / 2 - 90, y: signs12.frame.maxY + 110 * UIScreen.main.bounds.width / 1080, width: 180, height: 20)
         programLabel.text = "补办校园卡流程说明"
-        programLabel.textColor = MyColor.ColorHex("#222222")
+        programLabel.textColor = UIColor(hex6: 0x222222)
         programLabel.textAlignment = NSTextAlignment.center
         view.backgroundColor = .white
         WPYLabel.text = "微北洋 - 校园卡"
-        WPYLabel.textColor = MyColor.ColorHex("#b9b9b9")
+        WPYLabel.textColor =  UIColor(hex6: 0xb9b9b9)
         WPYLabel.textAlignment = NSTextAlignment.center
 //        WPYLabel.textColor = .white
         firstLabel.text = "首先应尽快挂失"
-        firstLabel.textColor = MyColor.ColorHex("#222222")
+        firstLabel.textColor =  UIColor(hex6: 0x222222)
         proLabel.text = "操作：在校园卡自助终端总界面右侧点击“挂失”，输入学号、卡密码即可挂失"
-        proLabel.textColor = MyColor.ColorHex("#222222")
+        proLabel.textColor =  UIColor(hex6: 0x222222)
         detailLabel.text = "如果挂失后没有补办前找到了卡， 可以在校园卡自助终端上进行卡解挂。(操作:持卡在校园卡自助终端主界面点击“校园卡务”， 登陆后在左侧菜单点击“卡解挂”。)\r\n如果确定找不回来了，需要携带有效证件(工作证、学生证或身份证)和补卡 费15元现金到卡中心补办。补办新卡后原卡立即失效，即便找回亦不能使用。"
-        detailLabel.textColor = MyColor.ColorHex("#888888")
+        detailLabel.textColor =  UIColor(hex6: 0x888888)
         servicePoint.text = "服务网点"
-        servicePoint.textColor = MyColor.ColorHex("#222222")
+        servicePoint.textColor =  UIColor(hex6: 0x222222)
         detailLabel.lineBreakMode = .byWordWrapping
         detailLabel.numberOfLines = 0
         proLabel.lineBreakMode = .byWordWrapping
@@ -122,24 +122,24 @@ class ProgramViewController: UIViewController {
         signs12.numberOfLines = 3
         signs12.textAlignment = NSTextAlignment.center
         
-        signs0.textColor = MyColor.ColorHex("#444444")
-        signs1.textColor = MyColor.ColorHex("#444444")
-        signs2.textColor = MyColor.ColorHex("#444444")
-        signs3.textColor = MyColor.ColorHex("#444444")
-        signs4.textColor = MyColor.ColorHex("#444444")
-        signs5.textColor = MyColor.ColorHex("#444444")
-        signs6.textColor = MyColor.ColorHex("#444444")
-        signs7.textColor = MyColor.ColorHex("#444444")
-        signs8.textColor = MyColor.ColorHex("#444444")
-        signs9.textColor = MyColor.ColorHex("#444444")
-        signs10.textColor = MyColor.ColorHex("#444444")
-        signs11.textColor = MyColor.ColorHex("#a94b4b")
-        signs12.textColor = MyColor.ColorHex("#a94b4b")
+        signs0.textColor =  UIColor(hex6: 0x444444)
+        signs1.textColor = UIColor(hex6: 0x444444)
+        signs2.textColor = UIColor(hex6: 0x444444)
+        signs3.textColor = UIColor(hex6: 0x444444)
+        signs4.textColor = UIColor(hex6: 0x444444)
+        signs5.textColor = UIColor(hex6: 0x444444)
+        signs6.textColor = UIColor(hex6: 0x444444)
+        signs7.textColor = UIColor(hex6: 0x444444)
+        signs8.textColor = UIColor(hex6: 0x444444)
+        signs9.textColor = UIColor(hex6: 0x444444)
+        signs10.textColor = UIColor(hex6: 0x444444)
+        signs11.textColor = UIColor(hex6: 0xa94b4b)
+        signs12.textColor = UIColor(hex6: 0xa94b4b)
         
-        signs0.backgroundColor = MyColor.ColorHex("#ffeb86")
-        signs1.backgroundColor = MyColor.ColorHex("#ffeb86")
-        signs2.backgroundColor = MyColor.ColorHex("#ffeb86")
-        signs3.backgroundColor = MyColor.ColorHex("#ffeb86")
+        signs0.backgroundColor = UIColor(hex6: 0xffeb86)
+        signs1.backgroundColor = UIColor(hex6: 0xffeb86)
+        signs2.backgroundColor = UIColor(hex6: 0xffeb86)
+        signs3.backgroundColor = UIColor(hex6: 0xffeb86)
 
         
         view.addSubview(signs0)

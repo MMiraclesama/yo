@@ -28,7 +28,7 @@ class EcardLineChartsView: UIView {
         accountLineChartView.leftAxis.drawGridLinesEnabled = false
         //MARK: - MAYBE
         accountLineChartView.xAxis.drawLabelsEnabled = true
-        accountLineChartView.leftAxis.drawLabelsEnabled = true
+        accountLineChartView.leftAxis.drawLabelsEnabled = false
         accountLineChartView.rightAxis.enabled = false
         accountLineChartView.xAxis.drawGridLinesEnabled = false
         // -1 for the fucking top border
@@ -37,7 +37,6 @@ class EcardLineChartsView: UIView {
         accountLineChartView.chartDescription = nil
         accountLineChartView.drawBordersEnabled = true 
         accountLineChartView.borderLineWidth = 0
-        accountLineChartView.isUserInteractionEnabled = true
         accountLineChartView.borderColor = .white
         accountLineChartView.legend.enabled = false
         accountLineChartView.noDataTextColor = .white
@@ -78,18 +77,20 @@ class EcardLineChartsView: UIView {
         dataSet.lineWidth = 2
         dataSet.setColor(UIColor(hex6: 0xffe043))
         AccountlineChartView.data = LineChartData(dataSet: dataSet)
-        AccountlineChartView.zoomOut()
+//        AccountlineChartView.zoomOut()
         AccountlineChartView.zoomToCenter(scaleX: 1.2, scaleY: 1)
     }
     func initCharts() {
         let xAxis = AccountlineChartView.xAxis
-        xAxis.labelPosition = XAxis.LabelPosition.bottom
+        xAxis.labelPosition = XAxis.LabelPosition.bottom 
+        xAxis.labelFont = UIFont.flexibleSystemFont(ofSize: 12)
         xAxis.labelTextColor = UIColor(hex6: 0xffd942)
-//        IndexAxisValueFormatter(values: <#T##[String]#>)
+//        IndexAxisValueFormatter(values: T##[String])
         xAxis.valueFormatter = ArrayIndexValueFormatter(labels: labels)
-        xAxis.axisMinimum = 0
+        xAxis.axisMinimum = -1
         xAxis.setLabelCount(labels.count, force: true)
-        xAxis.axisMaximum = Double(labels.count)
+        xAxis.labelCount = labels.count
+//        xAxis.axisMaximum = Double(labels.count)
     }
 }
 
@@ -111,11 +112,11 @@ extension EcardLineChartsView: ChartViewDelegate {
             let dataSetSelected = LineChartDataSet(values: [entry], label: labels[Int(entry.x)])
             dataSetSelected.circleRadius = 11
             dataSetSelected.drawValuesEnabled = false
-            dataSetSelected.circleHoleColor = MyColor.ColorHex("#fff9da")
+            dataSetSelected.circleHoleColor = UIColor(hex6: 0xfff9da)
             dataSetSelected.drawCircleHoleEnabled = true
             dataSetSelected.circleHoleRadius = 8
             dataSetSelected.drawValuesEnabled = false
-            dataSetSelected.circleHoleColor = MyColor.ColorHex("#ffe043")
+            dataSetSelected.circleHoleColor = UIColor(hex6: 0xffe043)
             dataSetSelected.drawCircleHoleEnabled = true
             chartView.data?.dataSets.append(dataSetSelected)
         }

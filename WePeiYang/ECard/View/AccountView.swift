@@ -15,51 +15,52 @@ class LastedDay: UIView {
     let rightTriangle = UIButton()
 
     func AddView() {
-        let lchangeimage = UIImage.resizedImage(image: UIImage(named: "选择三角左")!, scaledToSize: CGSize(width: 27, height: 27))
-        leftTriangle.setImage(lchangeimage, for: .normal)
+        dayLabel.backgroundColor = UIColor(hex6: 0xffeb86)
+        dayLabel.text = "最近7天"
+        dayLabel.textAlignment = NSTextAlignment.center
+        dayLabel.layer.masksToBounds = true
+        dayLabel.layer.cornerRadius = 15
         
-        rightTriangle.setImage(UIImage.resizedImage(image: UIImage(named: "选择三角右")!, scaledToSize: CGSize(width: 27, height: 27)), for: .highlighted)
+        leftTriangle.setImage(UIImage.resizedImage(image: UIImage(named: "选择三角左")!, scaledToSize: CGSize(width: 27, height: 27)), for: .normal)
+        
+        rightTriangle.setImage(UIImage.resizedImage(image: UIImage(named: "选择三角右")!, scaledToSize: CGSize(width: 27, height: 27)), for: .normal)
         
         self.addSubview(dayLabel)
         self.addSubview(leftTriangle)
         self.addSubview(rightTriangle)
 
         dayLabel.snp.makeConstraints { make in
-            make.width.equalTo(100)
+            make.width.equalTo(90)
             make.height.equalTo(27)
             make.centerX.equalTo(self.snp.centerX)
             make.centerY.equalTo(self.snp.centerY)
         }
 
-        leftTriangle.snp.makeConstraints { (make) -> Void in
+        leftTriangle.snp.makeConstraints { make in
             make.width.height.equalTo(27)
-            make.edges.equalTo(dayLabel).inset(UIEdgeInsets(top: 0, left: 42, bottom: 0, right: 115))
+            make.right.equalTo(dayLabel.snp.left)
+            make.top.equalTo(dayLabel.snp.top)
         }
 
-        rightTriangle.snp.makeConstraints { (make) -> Void in
+        rightTriangle.snp.makeConstraints { make in
             make.width.height.equalTo(27)
-            make.edges.equalTo(dayLabel).inset(UIEdgeInsets(top: 0, left: -115, bottom: 0, right: -42))
+            make.left.equalTo(dayLabel.snp.right)
+            make.top.equalTo(dayLabel.snp.top)
         }
     }
 }
 
-class AccountTableView: UIView {
-    let accTableView = UITableView()
+class AccountTableView: UITableView {
     var tuenover: ConsumeDetail!
 
     func AddView() {
-        accTableView.showsVerticalScrollIndicator = false
-        accTableView.showsHorizontalScrollIndicator = false
-        accTableView.allowsSelection = false
-        accTableView.bounces = false
-        accTableView.backgroundColor = .white
-        accTableView.delegate = self
-        accTableView.dataSource = self
-        self.addSubview(accTableView)
-
-        accTableView.snp.makeConstraints{ (make) -> Void in
-            make.edges.equalTo(self)
-        }
+        self.showsVerticalScrollIndicator = false
+        self.showsHorizontalScrollIndicator = false
+        self.allowsSelection = false
+        self.bounces = false
+        self.backgroundColor = .white
+        self.delegate = self
+        self.dataSource = self
     }
 }
 extension AccountTableView: UITableViewDelegate {
@@ -79,70 +80,139 @@ extension AccountTableView: UITableViewDataSource {
     }
 }
 
-//class LineTableView: UIView {
-//    let lineTableView = UITableView()
-//    var linecharts: LintChart!
-//    let ecardLineView = EcardLineChartsView()
-//
-//    func AddView() {
-//        lineTableView.showsHorizontalScrollIndicator = false
-//        lineTableView.showsVerticalScrollIndicator = false
-//        lineTableView.allowsSelection = false
-//        lineTableView.bounces = false
-//        lineTableView.backgroundColor = .white
-//        lineTableView.delegate = self
-//        lineTableView.dataSource = self
-//    }
-//}
-//extension LineTableView: UITableViewDelegate {
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let lineScroll = UIScrollView()
-//        lineScroll.bounces = false
-//        lineScroll.showsHorizontalScrollIndicator = false
-//        lineScroll.showsVerticalScrollIndicator = false
-//        lineScroll.backgroundColor = .white
-//        lineScroll.contentOffset = CGPoint(x: 0, y: 0)
-//        lineScroll.addSubview(ecardLineView.AccountlineChartView)
-//
-//        lineScroll.snp.makeConstraints { (make) -> Void in
-//
-//        }
-//
-//    }
-//    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-//
-//    }
-//}
-//extension LineTableView: UITableViewDataSource {
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        <#code#>
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        <#code#>
-//    }
-//
-//
-//}
-
-class AccountScrollView: UIView {
-    let accScroll = UIScrollView()
+class LineTableView: UITableView {
+    let lineScroll = UIScrollView()
+    var linecharts: LintChart!
+    let ecardLineView = EcardLineChartsView()
+    let scaleview: ScaleLabelView = ScaleLabelView()
+    let lineHeaderView = UIView()
+    let ecardHeaderView = ECardHomePageSecondHeaderView()
+    let scaleLabelView = ScaleLabelView()
 
     func AddView() {
-        accScroll.backgroundColor = .white
-        accScroll.showsVerticalScrollIndicator = false
-        accScroll.showsHorizontalScrollIndicator = false
-        accScroll.contentSize = CGSize(width: 2 * Device.width, height: Device.height * 3 / 4)
-        accScroll.contentOffset = CGPoint(x: 0, y: 0)
-        accScroll.delegate = self
-        accScroll.bounces = false
-        self.addSubview(accScroll)
-
-        accScroll.snp.makeConstraints{ (make) -> Void in
-            make.edges.equalTo(self)
+        self.showsHorizontalScrollIndicator = false
+        self.showsVerticalScrollIndicator = false
+        self.allowsSelection = false
+        self.bounces = false
+        self.backgroundColor = .white
+        self.delegate = self
+        self.dataSource = self
+    }
+}
+extension LineTableView: UITableViewDelegate {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 3
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 0
+    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return Device.height / 4
+        } else if section == 1{
+            return 65
+        } else {
+            return 30
+        }
+    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == 0 {
+            lineScroll.bounces = false
+            lineScroll.showsHorizontalScrollIndicator = false
+            lineScroll.showsVerticalScrollIndicator = false
+            lineScroll.backgroundColor = .white
+            lineScroll.contentOffset = CGPoint(x: 0, y: 0)
+            
+            lineHeaderView.addSubview(lineScroll)
+            lineScroll.snp.makeConstraints { make in
+                make.center.equalTo(lineHeaderView.snp.center)
+                make.edges.equalTo(self.lineHeaderView).inset(UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20))
+            }
+            lineScroll.addSubview(ecardLineView.AccountlineChartView)
+            
+            return lineHeaderView
+        } else if section == 1 {
+            ecardHeaderView.AddView()
+            ecardHeaderView.help.text = "消费占比"
+            return ecardHeaderView
+        } else if section == 2{
+            scaleLabelView.LabelScale(num3, num2, num1)
+            return scaleLabelView
+        } else {
+            return UIView()
         }
     }
 }
-extension AccountScrollView: UIScrollViewDelegate {
+extension LineTableView: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
 
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
+    }
+}
+
+class EcardAccountHeaderView: UIView {
+    let costLabel = UILabel()
+    let rechangLabel = UILabel()
+    
+    func AddView() {
+        costLabel.backgroundColor = .white
+        costLabel.font = UIFont.flexibleSystemFont(ofSize: 12)
+        costLabel.textColor = UIColor(hex6: 0x444444)
+        
+        rechangLabel.backgroundColor = .white
+        rechangLabel.font = UIFont.flexibleSystemFont(ofSize: 12)
+        rechangLabel.textColor = UIColor(hex6: 0x444444)
+        
+        self.addSubview(costLabel)
+        costLabel.snp.makeConstraints { make in
+            make.left.equalTo(self.snp.left).inset(Device.width / 4 - 5)
+            make.centerY.equalTo(self.snp.centerY)
+            make.width.equalTo(Device.width / 4)
+            make.height.equalTo(30)
+        }
+        
+        self.addSubview(rechangLabel)
+        rechangLabel.snp.makeConstraints { make in
+            make.left.equalTo(self.snp.left).inset(Device.width / 2 + 10)
+            make.centerY.equalTo(self.snp.centerY)
+            make.width.equalTo(Device.width / 5)
+            make.height.equalTo(30)
+        }
+    }
+}
+
+class ECardCostScaleHeaderView: UIView {
+    let messCostFront = UILabel()
+    let messCost = UILabel()
+    let marketCostFront = UILabel()
+    let marketCost = UILabel()
+    let otherCostFront = UILabel()
+    let otherCost = UILabel()
+    let messScale = UIView()
+    let marketScale = UIView()
+    let otherScale = UIView()
+    
+    func AddView() {
+        
+    }
+    
+}
+
+class AccountScrollView: UIScrollView {
+    func AddView() {
+        self.backgroundColor = .white
+        self.isScrollEnabled = true
+        self.showsVerticalScrollIndicator = false
+        self.showsHorizontalScrollIndicator = false
+        self.contentSize = CGSize(width: 2 * Device.width, height: Device.height * 3 / 4)
+        self.contentOffset = CGPoint(x: 0, y: 0)
+        self.delegate = self
+        self.bounces = false
+    }
+}
+extension AccountScrollView: UIScrollViewDelegate {
+    
 }

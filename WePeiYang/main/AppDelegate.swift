@@ -101,13 +101,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = mainTabVC
         window?.makeKeyAndVisible()
 
-        if #available(iOS 11.0, *) {
-            let ARModeEnabledKey = "ARModeEnabledKey"
-            if UserDefaults.standard.bool(forKey: ARModeEnabledKey) {
-                arWindow = ARKeyWindow()
-                arWindow.makeKeyAndVisible()
-            }
-        }
+//        if #available(iOS 11.0, *) {
+//            let ARModeEnabledKey = "ARModeEnabledKey"
+//            if UserDefaults.standard.bool(forKey: ARModeEnabledKey) {
+//                arWindow = ARKeyWindow()
+//                arWindow.makeKeyAndVisible()
+//            }
+//        }
 
         registerAppNotification(launchOptions: launchOptions)
         registerShortcutItems()

@@ -76,7 +76,7 @@ class FirstPageCell: UITableViewCell {
         }
         PosLabel.text = temptext
         PosLabel.font = UIFont.flexibleSystemFont(ofSize: 15)
-        PosLabel.textColor = MyColor.ColorHex("#444444")
+        PosLabel.textColor = UIColor(hex6: 0x444444)
         Detail.frame = CGRect(x: 80, y: 55, width: 200, height: 5)
 //        Detail.sizeToFit()
         let sub1 = (DailyFee.data[index].time as NSString).substring(with: NSMakeRange(0, 2))
@@ -87,7 +87,7 @@ class FirstPageCell: UITableViewCell {
             Detail.text = "充值|" + sub1 + ":" + sub2
         }
         Detail.font = UIFont.flexibleSystemFont(ofSize: 13)
-        Detail.textColor = MyColor.ColorHex("#444444")
+        Detail.textColor = UIColor(hex6: 0x444444)
         
         Amount.frame = CGRect(x: UIScreen.main.bounds.width / 2 + 90, y: 20, width: 60, height: 30)
         if DailyFee.data[index].type == 2 {

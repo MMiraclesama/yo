@@ -41,7 +41,10 @@ class SettingsViewController: UIViewController {
         ("校园网", WLANBindingViewController.self, "", {
             return TwTUser.shared.WLANBindingState}),
         ("校园卡", ECardBindingViewController.self, "", {
-            return TwTUser.shared.ecardBindingState})
+            return TwTUser.shared.ecardBindingState}),
+        ("二维码", QrCodeViewController.self, "", {
+            return TwTUser.shared.QRcodeBindingState
+        })
     ]
     fileprivate let settingTitles: [(title: String, iconName: String)] = [("设置", "")]
 
@@ -255,6 +258,10 @@ extension SettingsViewController: UITableViewDataSource {
             } else {
                 cell.detailTextLabel?.text = "未绑定"
             }
+            //            MARK:后来加的
+            if indexPath.row == 5 {
+                cell.detailTextLabel?.text = ""
+            }
             return cell
         } else {
             let cell = UITableViewCell()
@@ -311,6 +318,14 @@ extension SettingsViewController: UITableViewDelegate {
             self.navigationController?.pushViewController(detailVC, animated: true)
             return
         case (0, _):
+//            MARK:这个改了一下
+            if indexPath.row == 5 {
+                let detailVC = QrCodeViewController()
+                detailVC.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(detailVC, animated: true)
+                return
+                
+            }
             guard TwTUser.shared.token != nil else {
                 let popup = PopupDialog(title: "请先登录", message: "绑定账号需要先登录", buttonAlignment: .horizontal, transitionStyle: .zoomIn)
 
